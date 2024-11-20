@@ -3,4 +3,4 @@
 <?import javafx.scene.control.Button?>
 
 
-<Button mnemonicParsing="false" onAction="#onClick" text="Button" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" />
+<Button mnemonicParsing="false" onAction="#onClick" text="Button" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomeController.java" />

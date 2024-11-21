@@ -35,7 +35,7 @@ public class JavaFXSpringBootApp extends Application {
         AnchorPane root = loader.load();
 
         // Crear la escena y configurar el escenario
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(root, 800, 600);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Mi App de Finanzas");
         primaryStage.show();

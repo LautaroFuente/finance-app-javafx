@@ -3,7 +3,7 @@ package com.finance_app.finance_app.entities;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-import com.finance_app.finance_app.TransactionType;
+import com.finance_app.finance_app.enums.TransactionType;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

@@ -26,7 +26,7 @@ public class JavaFXSpringBootApp extends Application {
 
         // Carga el archivo FXML y el controlador de Spring
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/fxml/main-view.fxml"));
+        loader.setLocation(getClass().getResource("/fxml/home-view.fxml"));
 
         // Inyecta el controlador de Spring
         loader.setControllerFactory(context::getBean);

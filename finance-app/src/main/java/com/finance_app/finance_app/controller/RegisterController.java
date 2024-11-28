@@ -57,8 +57,8 @@ public class RegisterController {
 	@FXML
 	public void onSubmit(ActionEvent event) {
 		
+		cleanErrorFields();
 		if(!Validator.validateFields(this.nameField.getText(), this.emailField.getText(), this.passwordField.getText())) {
-			cleanErrorFields();
 		
 			if(!Validator.validateUsername(this.nameField.getText())) {
 				this.errorNameField.setText("El nombre no es válido");
@@ -78,7 +78,7 @@ public class RegisterController {
 		
 		String responseRegister = this.userService.addUser(this.nameField.getText(), this.emailField.getText(), this.passwordField.getText());
 		
-		if(responseRegister == "Usuario registrado exitosamente") {
+		if("Usuario registrado exitosamente".equals(responseRegister)) {
 			this.responseMessage.setText("Usuario registrado exitosamente");
 			
 			try {

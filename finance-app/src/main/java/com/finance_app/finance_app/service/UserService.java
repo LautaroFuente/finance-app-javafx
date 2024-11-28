@@ -1,5 +1,7 @@
 package com.finance_app.finance_app.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -34,5 +36,10 @@ public class UserService {
 		} catch (Exception e) {
 			return e.getMessage();
 		}
+	}
+	
+	public User getOneUser(String email) {
+		Optional<User> usuario = this.userRepository.findByEmail(email);
+	    return usuario.orElse(null);
 	}
 }

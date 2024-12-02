@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 
+import com.finance_app.finance_app.service.GoBackService;
 import com.finance_app.finance_app.service.UserService;
 import com.finance_app.finance_app.validation.Validator;
 
@@ -23,6 +24,9 @@ import javafx.stage.Stage;
 
 @Controller
 public class RegisterController {
+	
+	@Autowired
+	private GoBackService goBackService;
 	
 	@Autowired
 	private UserService userService;
@@ -53,6 +57,9 @@ public class RegisterController {
     
     @FXML
     private Label responseMessage;
+    
+    @FXML
+    private Button buttonBack;
 	
 	@FXML
 	public void onSubmit(ActionEvent event) {
@@ -114,5 +121,9 @@ public class RegisterController {
 		this.errorNameField.setText("");
 		this.errorEmailField.setText("");
 		this.errorPasswordField.setText("");
+	}
+	
+	public void goBack(ActionEvent event) {
+		this.goBackService.goBack(event, "/fxml/home-view.fxml");
 	}
 }

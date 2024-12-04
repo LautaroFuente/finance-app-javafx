@@ -9,5 +9,5 @@ import com.finance_app.finance_app.repository.LimitCategoryRepository;
 public class LimitCategoryService {
 
 	@Autowired
-	LimitCategoryRepository limitCategoryRepository;
+	private LimitCategoryRepository limitCategoryRepository;
 }

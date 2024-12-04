@@ -9,5 +9,5 @@ import com.finance_app.finance_app.repository.CategoryRepository;
 public class CategoryService {
 
 	@Autowired
-	CategoryRepository categoryRepository;
+	private CategoryRepository categoryRepository;
 }

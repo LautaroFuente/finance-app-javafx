@@ -11,7 +11,7 @@ import com.finance_app.finance_app.entities.User;
 public class AuthService {
 	
 	@Autowired
-	UserService userService;
+	private UserService userService;
 	
 	@Autowired
     private BCryptPasswordEncoder passwordEncoder;

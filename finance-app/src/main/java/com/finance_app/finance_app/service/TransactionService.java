@@ -9,5 +9,5 @@ import com.finance_app.finance_app.repository.TransactionRepository;
 public class TransactionService {
 
 	@Autowired
-	TransactionRepository transactionRepository;
+	private TransactionRepository transactionRepository;
 }

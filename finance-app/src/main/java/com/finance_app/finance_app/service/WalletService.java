@@ -9,5 +9,5 @@ import com.finance_app.finance_app.repository.WalletRepository;
 public class WalletService {
 
 	@Autowired
-	WalletRepository walletRepository;
+	private WalletRepository walletRepository;
 }

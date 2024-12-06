@@ -18,4 +18,10 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long>{
 	List<Object[]> getPercentageByCategoryForUser(@Param("userId") Long userId,
             @Param("startDate") LocalDate startDate,
             @Param("endDate") LocalDate endDate);
+	
+	@Query("SELECT t.type AS type, t.amount AS amount, c.name AS nameCategory, t.date AS date"
+			+ "FROM Transaction t INNER JOIN Category c ON(t.category_id = c.id"
+			+ "WHERE t.user.id = :userId")
+	List<Object[]> getAllTransactionsWithNameCategory(@Param("userId") Long userId);
+	
 }

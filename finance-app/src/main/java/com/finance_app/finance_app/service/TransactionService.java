@@ -17,4 +17,8 @@ public class TransactionService {
 	public List<Object[]> getPercentageByCategoryForUser(Long userId, LocalDate startOfMonth, LocalDate endOfMonth){
 		return this.transactionRepository.getPercentageByCategoryForUser(userId, startOfMonth, endOfMonth);
 	}
+	
+	public List<Object[]> getAllTransactionsWithNameCategory(Long userId){
+		return this.transactionRepository.getAllTransactionsWithNameCategory(userId);
+	}
 }

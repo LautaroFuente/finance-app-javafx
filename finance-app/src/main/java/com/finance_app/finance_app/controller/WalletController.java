@@ -1,14 +1,14 @@
 package com.finance_app.finance_app.controller;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.finance_app.finance_app.DTO.CategoryPercentageDTO;
 import com.finance_app.finance_app.DTO.TransactionForListDTO;
-import com.finance_app.finance_app.enums.TransactionType;
 import com.finance_app.finance_app.service.ChartDataService;
 import com.finance_app.finance_app.service.GoBackService;
 import com.finance_app.finance_app.service.TransactionListDataService;
@@ -66,7 +66,7 @@ public class WalletController {
 	private TableColumn<TransactionForListDTO, String> transactionCategory;
 	
 	@FXML
-	private TableColumn<TransactionForListDTO, LocalDateTime> transactionDate;
+	private TableColumn<TransactionForListDTO, String> transactionDate;
 	
 	public void initialize() {
 		// Configurar grafico dona
@@ -97,13 +97,22 @@ public class WalletController {
 	private void initList() {
 		// Configuramos los datos de las columnas para mostrar los campos necesarios en cada celda
 		transactionType.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getType()));
-		transactionAmount.setCellValueFactory(cellData -> new SimpleDoubleProperty(cellData.getValue().getAmount()));
+		transactionAmount.setCellValueFactory(cellData -> new SimpleDoubleProperty(cellData.getValue().getAmount()).asObject());
 		transactionCategory.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNameCategory()));
-		//Falta la de la fecha
+		transactionDate.setCellValueFactory(cellData -> {
+		    LocalDateTime date = cellData.getValue().getDate();  // Obtienes el LocalDateTime
+		    if (date != null) {
+		        // Formateas la fecha en el formato que prefieras
+		        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"); // ejemplo de formato
+		        return new SimpleStringProperty(date.format(formatter));  // Convierte la fecha formateada a String
+		    } else {
+		        return new SimpleStringProperty("");  // Si la fecha es nula, mostramos una cadena vacía
+		    }
+		});
 
 		
 		// Cargar datos en la lista
-		transactionList.setItems(FXCollections.observableArrayList(this.transactionListDataService.getTransactionsForListWallet()));
+		transactionList.setItems(FXCollections.observableArrayList(this.transactionListDataService.getTransactionsForListWallet().stream().limit(7).collect(Collectors.toList())));
 	}
 	
 	public void closeMySession(ActionEvent event) {

@@ -5,8 +5,11 @@ import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
+import com.finance_app.finance_app.entities.User;
 import com.finance_app.finance_app.service.AuthService;
 import com.finance_app.finance_app.service.GoBackService;
+import com.finance_app.finance_app.service.UserService;
+import com.finance_app.finance_app.utils.SessionManager;
 import com.finance_app.finance_app.validation.Validator;
 
 import javafx.event.ActionEvent;
@@ -22,6 +25,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class LoginController {
+	
+	@Autowired
+	private UserService userService;
 	
 	@Autowired
 	private GoBackService goBackService;
@@ -69,6 +75,11 @@ public class LoginController {
 			this.responseMessage.setText(responseLogin);
 			
 			try {
+				// Crear la instancia del nuevo usuario que se loguea
+				User user = this.userService.getOneUser(this.emailField.getText());
+				SessionManager.getInstance().login(user);
+				
+				// Cargar la vista
 				FXMLLoader loader = new FXMLLoader();
 	            loader.setLocation(getClass().getResource("/fxml/wallet-view.fxml"));
 	            loader.setControllerFactory(context::getBean);

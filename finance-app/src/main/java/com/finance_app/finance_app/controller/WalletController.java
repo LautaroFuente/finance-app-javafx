@@ -12,6 +12,7 @@ import com.finance_app.finance_app.DTO.TransactionForListDTO;
 import com.finance_app.finance_app.service.ChartDataService;
 import com.finance_app.finance_app.service.GoBackService;
 import com.finance_app.finance_app.service.TransactionListDataService;
+import com.finance_app.finance_app.utils.SessionManager;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -116,6 +117,7 @@ public class WalletController {
 	}
 	
 	public void closeMySession(ActionEvent event) {
+		SessionManager.getInstance().logout();
 		this.goBackService.goBack(event, "/fxml/home-view.fxml");
 	}
 }

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
 import com.finance_app.finance_app.DTO.TransactionForListDTO;
+import com.finance_app.finance_app.service.GoBackService;
 import com.finance_app.finance_app.service.TransactionListDataService;
 
 import javafx.beans.property.SimpleDoubleProperty;
@@ -32,6 +33,9 @@ public class MovementListController {
 	private ApplicationContext context;
 	
 	@Autowired
+	private GoBackService goBackService;
+	
+	@Autowired
 	private TransactionListDataService transactionListDataService;
 
 	@FXML
@@ -52,6 +56,9 @@ public class MovementListController {
 	@FXML
 	private TableColumn<TransactionForListDTO, String> transactionView;
 	
+	@FXML
+    private Button buttonBack;
+	
 	public void initialize() {
 		
 		// Configurar lista transacciones
@@ -67,8 +74,8 @@ public class MovementListController {
 		transactionDate.setCellValueFactory(cellData -> {
 		    LocalDateTime date = cellData.getValue().getDate();  // Obtienes el LocalDateTime
 		    if (date != null) {
-		        // Formateas la fecha en el formato que prefieras
-		        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"); // ejemplo de formato
+		        // Formateas la fecha en el formato a mostrar
+		        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"); 
 		        return new SimpleStringProperty(date.format(formatter));  // Convierte la fecha formateada a String
 		    } else {
 		        return new SimpleStringProperty("");  // Si la fecha es nula, mostramos una cadena vacía
@@ -118,6 +125,10 @@ public class MovementListController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+	}
+	
+	public void goBack(ActionEvent event) {
+		this.goBackService.goBack(event, "/fxml/wallet-view.fxml");
 	}
 	
 }

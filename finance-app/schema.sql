@@ -39,3 +39,9 @@ CREATE TABLE LimitCategory (
     FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE CASCADE,
     FOREIGN KEY (category_id) REFERENCES Category(id) ON DELETE CASCADE
 );
+
+CREATE TABLE Notification (
+	id BIGINT AUTO_INCREMENT PRIMARY KEY,
+	user_id BIGINT NOT NULL,
+	message VARCHAR(255) NOT NULL
+);

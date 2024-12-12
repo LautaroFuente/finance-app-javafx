@@ -1,5 +1,7 @@
 package com.finance_app.finance_app.entities;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,11 +21,13 @@ public class Notification {
 	private User user;
 	
 	private String message;
+	private LocalDateTime date;
 
-	public Notification(User user, String message) {
+	public Notification(User user, String message, LocalDateTime date) {
 		super();
 		this.user = user;
 		this.message = message;
+		this.date = date;
 	}
 
 	public Notification() {
@@ -48,6 +52,14 @@ public class Notification {
 
 	public Long getId() {
 		return id;
+	}
+
+	public LocalDateTime getDate() {
+		return date;
+	}
+
+	public void setDate(LocalDateTime date) {
+		this.date = date;
 	}
 	
 	

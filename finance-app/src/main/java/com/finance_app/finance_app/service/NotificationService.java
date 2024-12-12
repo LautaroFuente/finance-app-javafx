@@ -3,6 +3,8 @@ package com.finance_app.finance_app.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.finance_app.finance_app.entities.Notification;
@@ -14,7 +16,8 @@ public class NotificationService {
 	@Autowired
 	private NotificationRepository notificationRepository;
 	
-	public List<Notification> getAllNotificationsForUser(Long id){
-		return this.notificationRepository.getAllNotificationForUser(id);
+	public List<Notification> getAllNotificationsForUser(Long id, int from, int to){
+		Pageable pageable = PageRequest.of(from, to);
+		return this.notificationRepository.getAllNotificationForUser(id, pageable).getContent();
 	}
 }

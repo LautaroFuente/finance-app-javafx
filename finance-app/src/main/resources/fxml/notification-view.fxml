@@ -10,5 +10,6 @@
       <Label layoutX="286.0" layoutY="36.0" text="Label" />
       <ListView fx:id="notificationList" layoutX="121.0" layoutY="68.0" prefHeight="278.0" prefWidth="358.0" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="121.0" AnchorPane.rightAnchor="121.0" AnchorPane.topAnchor="68.0" />
       <Button fx:id="buttonBack" layoutX="514.0" layoutY="346.0" mnemonicParsing="false" onAction="#goBack" text="Button" />
+      <Label fx:id="messageAboutList" layoutX="286.0" layoutY="350.0" text="Label" />
    </children>
 </AnchorPane>

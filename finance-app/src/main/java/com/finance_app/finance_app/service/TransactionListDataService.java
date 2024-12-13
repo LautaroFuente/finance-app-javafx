@@ -8,6 +8,9 @@ import java.util.List;
 import javax.naming.AuthenticationException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.finance_app.finance_app.DTO.TransactionForListDTO;
@@ -20,7 +23,9 @@ public class TransactionListDataService {
 	@Autowired
 	private TransactionService transactionService;
 	
-	public List<TransactionForListDTO> getTransactionsForListWallet(){
+	private int totalPagesByLastQuery;
+	
+	public List<TransactionForListDTO> getTransactionsForListWallet(int from, int to){
 		try {
         	// Obtener el usuario con la sesion activa
         	User user = SessionManager.getInstance().getUser();
@@ -28,8 +33,16 @@ public class TransactionListDataService {
         	// Si existe obtener la lista de transacciones
         	if(user != null) {
         		
+        		// Crear Paginador
+        		Pageable pageable = PageRequest.of(from, to);
         		// Obtener las transacciones
-        		List<Object[]> list = this.transactionService.getAllTransactionsWithNameCategory(user.getId());
+        		Page<Object[]> resultPage = this.transactionService.getAllTransactionsWithNameCategory(user.getId(), pageable);
+        		
+        		// Asignar a lista
+        		List<Object[]> list = resultPage.getContent();
+        		
+        		// Actualizar total de paginas de la ultima consulta
+        		this.setTotalPagesByLastQuery(resultPage.getTotalPages());
         		
         		List<TransactionForListDTO> result = new ArrayList<TransactionForListDTO>();
         		
@@ -59,4 +72,14 @@ public class TransactionListDataService {
         	return null;
         }
 	}
+
+	public int getTotalPagesByLastQuery() {
+		return totalPagesByLastQuery;
+	}
+
+	public void setTotalPagesByLastQuery(int totalPagesByLastQuery) {
+		this.totalPagesByLastQuery = totalPagesByLastQuery;
+	}
+	
+	
 }

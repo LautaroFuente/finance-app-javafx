@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.finance_app.finance_app.repository.TransactionRepository;
@@ -18,7 +20,7 @@ public class TransactionService {
 		return this.transactionRepository.getPercentageByCategoryForUser(userId, startOfMonth, endOfMonth);
 	}
 	
-	public List<Object[]> getAllTransactionsWithNameCategory(Long userId){
-		return this.transactionRepository.getAllTransactionsWithNameCategory(userId);
+	public Page<Object[]> getAllTransactionsWithNameCategory(Long userId, Pageable pageable){
+		return this.transactionRepository.getAllTransactionsWithNameCategory(userId, pageable);
 	}
 }

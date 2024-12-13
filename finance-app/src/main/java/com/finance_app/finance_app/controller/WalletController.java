@@ -3,7 +3,6 @@ package com.finance_app.finance_app.controller;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -113,7 +112,7 @@ public class WalletController {
 
 		
 		// Cargar datos en la lista
-		transactionList.setItems(FXCollections.observableArrayList(this.transactionListDataService.getTransactionsForListWallet().stream().limit(7).collect(Collectors.toList())));
+		transactionList.setItems(FXCollections.observableArrayList(this.transactionListDataService.getTransactionsForListWallet(0, 7)));
 	}
 	
 	public void closeMySession(ActionEvent event) {

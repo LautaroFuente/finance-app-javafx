@@ -3,7 +3,7 @@ package com.finance_app.finance_app.controller;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.stream.Collectors;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -22,6 +22,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -59,7 +60,22 @@ public class MovementListController {
 	@FXML
     private Button buttonBack;
 	
+	@FXML
+	private Button previousButton;
+	
+	@FXML
+	private Button nextButton;
+	
+	@FXML
+	private Label messageAboutTransaction;
+	
+	private int page;
+	private final int SIZE = 5;
+	private int totalPages;
+	
 	public void initialize() {
+		// Iniciar paginacion en cero
+		this.page = 0;
 		
 		// Configurar lista transacciones
 		this.initList();
@@ -99,9 +115,20 @@ public class MovementListController {
 		    }
 		});
 
-		
-		// Cargar datos en la lista
-		transactionList.setItems(FXCollections.observableArrayList(this.transactionListDataService.getTransactionsForListWallet().stream().limit(7).collect(Collectors.toList())));
+		// Obtener lista y verificar que no sea nula o vacia
+		List<TransactionForListDTO> result = this.transactionListDataService.getTransactionsForListWallet(this.page, this.SIZE);
+		if(result != null && !result.isEmpty()) {
+			// Cargar datos en la lista
+			transactionList.setItems(FXCollections.observableArrayList());
+			
+			// Actualizar total de paginas
+			this.totalPages = this.transactionListDataService.getTotalPagesByLastQuery();
+			
+		}
+		// Si no cumple enviar mensaje de que no hay transacciones
+		else {
+			this.messageAboutTransaction.setText("No hay transacciones");
+		}
 	}
 	
 	private void viewSelectedTransaction(ActionEvent event, TransactionForListDTO transaction) {
@@ -126,6 +153,50 @@ public class MovementListController {
             e.printStackTrace();
         }
 	}
+		
+	 private void loadPage() {
+		 // Obtener lista y verificar que no sea nula o vacia
+		 List<TransactionForListDTO> result = this.transactionListDataService.getTransactionsForListWallet(this.page, this.SIZE);
+		 if(result != null && !result.isEmpty()) {
+			 
+			 // Cargar datos en la lista
+			 transactionList.setItems(FXCollections.observableArrayList());
+			 
+			// Actualizar total de paginas
+				this.totalPages = this.transactionListDataService.getTotalPagesByLastQuery();
+
+			}
+
+	        // Actualizar el estado de los botones (habilitar/deshabilitar)
+	        updateButtonState();
+	    }
+
+	    public void nextPage() {
+	        if (page < totalPages - 1) {
+	        	// Aumentar paginacion
+				this.page++;
+				// Cargar la siguiente página
+	            loadPage();
+	            
+	        }
+	    }
+
+	    public void previousPage() {
+	        if (page > 0) {
+	        	// Disminuir paginacion
+	        	this.page--;
+	        	// Cargar la página anterior
+	            loadPage(); 
+	        }
+	    }
+
+	    private void updateButtonState() {
+	        // Deshabilitar el botón "siguiente" si estamos en la última página
+	        nextButton.setDisable(page == totalPages - 1);
+
+	        // Deshabilitar el botón "anterior" si estamos en la primera página
+	        previousButton.setDisable(page == 0);
+	    }
 	
 	public void goBack(ActionEvent event) {
 		this.goBackService.goBack(event, "/fxml/wallet-view.fxml");

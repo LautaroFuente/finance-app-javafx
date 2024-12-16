@@ -119,7 +119,7 @@ public class MovementListController {
 		List<TransactionForListDTO> result = this.transactionListDataService.getTransactionsForListWallet(this.page, this.SIZE);
 		if(result != null && !result.isEmpty()) {
 			// Cargar datos en la lista
-			transactionList.setItems(FXCollections.observableArrayList());
+			transactionList.setItems(FXCollections.observableArrayList(result));
 			
 			// Actualizar total de paginas
 			this.totalPages = this.transactionListDataService.getTotalPagesByLastQuery();
@@ -160,7 +160,7 @@ public class MovementListController {
 		 if(result != null && !result.isEmpty()) {
 			 
 			 // Cargar datos en la lista
-			 transactionList.setItems(FXCollections.observableArrayList());
+			 transactionList.setItems(FXCollections.observableArrayList(result));
 			 
 			// Actualizar total de paginas
 				this.totalPages = this.transactionListDataService.getTotalPagesByLastQuery();

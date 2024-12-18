@@ -15,4 +15,9 @@ public class LimitCategoryService {
 	public LimitCategory addLimitCategory(LimitCategory limitCategory) {
 		return this.limitCategoryRepository.save(limitCategory);
 	}
+	
+	public void deleteLimitCategory (LimitCategory limitCategory) {
+		this.limitCategoryRepository.delete(limitCategory);
+	}
+	
 }

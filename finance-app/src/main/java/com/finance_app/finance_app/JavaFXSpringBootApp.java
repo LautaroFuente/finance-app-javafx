@@ -13,17 +13,22 @@ import java.io.IOException;
 public class JavaFXSpringBootApp extends Application {
 
     private ConfigurableApplicationContext context;
-
+    
     public static void main(String[] args) {
+        // Inicia Spring Boot de manera asíncrona para que no interfiera con JavaFX
         launch(args);  // Inicia JavaFX
     }
 
     @Override
-    public void start(Stage primaryStage) throws IOException {
-        // Inicia Spring Boot
+    public void init() throws Exception {
+        // Inicia Spring Boot cuando la aplicación JavaFX se inicia
         context = new SpringApplicationBuilder(FinanceApp.class)
-                .run();
-
+                .run();  // Inicializa el contexto de Spring Boot
+    }
+    
+    
+    @Override
+    public void start(Stage primaryStage) throws IOException {
         // Carga el archivo FXML y el controlador de Spring
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/fxml/home-view.fxml"));
@@ -42,7 +47,7 @@ public class JavaFXSpringBootApp extends Application {
     }
 
     @Override
-    public void stop() {
+    public void stop() throws Exception {
         // Cierra el contexto de Spring cuando la aplicación JavaFX termine
         context.close();
     }

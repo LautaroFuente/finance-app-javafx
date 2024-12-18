@@ -3,10 +3,20 @@ package com.finance_app.finance_app;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import io.github.cdimascio.dotenv.Dotenv;
+import javafx.application.Application;
+
 @SpringBootApplication
 public class FinanceApp {
 
     public static void main(String[] args) {
-        SpringApplication.run(FinanceApp.class, args); // Arranca Spring Boot
+    	
+    	Dotenv dotenv = Dotenv.load();
+        System.setProperty("DB_URL", dotenv.get("DB_URL"));
+        System.setProperty("DB_USERNAME", dotenv.get("DB_USERNAME"));
+        System.setProperty("DB_PASSWORD", dotenv.get("DB_PASSWORD"));
+    	        
+        SpringApplication.run(FinanceApp.class, args);
+
     }
 }

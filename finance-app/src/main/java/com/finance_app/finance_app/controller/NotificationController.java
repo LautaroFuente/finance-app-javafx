@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import javax.naming.AuthenticationException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
 import com.finance_app.finance_app.entities.Notification;
 import com.finance_app.finance_app.entities.User;
@@ -21,6 +22,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollBar;
 
+@Controller
 public class NotificationController {
 	
 	@Autowired

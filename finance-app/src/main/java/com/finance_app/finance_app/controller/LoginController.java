@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Controller;
 
 import com.finance_app.finance_app.entities.User;
 import com.finance_app.finance_app.service.AuthService;
@@ -24,6 +25,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+@Controller
 public class LoginController {
 	
 	@Autowired

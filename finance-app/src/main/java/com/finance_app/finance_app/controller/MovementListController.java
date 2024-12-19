@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Controller;
 
 import com.finance_app.finance_app.DTO.TransactionForListDTO;
 import com.finance_app.finance_app.service.GoBackService;
@@ -28,6 +29,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
+@Controller
 public class MovementListController {
 	
 	@Autowired

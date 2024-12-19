@@ -4,7 +4,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import io.github.cdimascio.dotenv.Dotenv;
-import javafx.application.Application;
 
 @SpringBootApplication
 public class FinanceApp {
@@ -17,6 +16,8 @@ public class FinanceApp {
         System.setProperty("DB_PASSWORD", dotenv.get("DB_PASSWORD"));
     	        
         SpringApplication.run(FinanceApp.class, args);
+        
+        System.out.println("Backend funcionando");
 
     }
 }

@@ -15,7 +15,6 @@ public class JavaFXSpringBootApp extends Application {
     private ConfigurableApplicationContext context;
     
     public static void main(String[] args) {
-        // Inicia Spring Boot de manera asíncrona para que no interfiera con JavaFX
         launch(args);  // Inicia JavaFX
     }
 

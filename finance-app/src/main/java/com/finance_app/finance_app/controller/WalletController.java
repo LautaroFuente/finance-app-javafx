@@ -5,6 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
 import com.finance_app.finance_app.DTO.CategoryPercentageDTO;
 import com.finance_app.finance_app.DTO.TransactionForListDTO;
@@ -24,6 +25,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.shape.Circle;
 
+@Controller
 public class WalletController {
 	
 	@Autowired

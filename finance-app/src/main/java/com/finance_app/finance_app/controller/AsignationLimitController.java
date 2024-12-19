@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
 import com.finance_app.finance_app.entities.Category;
 import com.finance_app.finance_app.entities.LimitCategory;
@@ -24,6 +25,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+@Controller
 public class AsignationLimitController {
 
 	@Autowired

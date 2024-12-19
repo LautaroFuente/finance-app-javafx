@@ -3,6 +3,7 @@ package com.finance_app.finance_app.controller;
 import java.time.format.DateTimeFormatter;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
 import com.finance_app.finance_app.DTO.TransactionForListDTO;
 import com.finance_app.finance_app.service.GoBackService;
@@ -12,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
+@Controller
 public class MovementDetailController {
 
 	@Autowired

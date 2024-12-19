@@ -5,7 +5,7 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.finance_app.finance_app.controller.NotificationController">
    <children>
       <Label layoutX="286.0" layoutY="36.0" text="Label" />
       <ListView fx:id="notificationList" layoutX="121.0" layoutY="68.0" prefHeight="278.0" prefWidth="358.0" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="121.0" AnchorPane.rightAnchor="121.0" AnchorPane.topAnchor="68.0" />

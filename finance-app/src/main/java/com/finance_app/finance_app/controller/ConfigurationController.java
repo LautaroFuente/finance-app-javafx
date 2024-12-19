@@ -1,6 +1,7 @@
 package com.finance_app.finance_app.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
 import com.finance_app.finance_app.service.GoBackService;
 
@@ -14,6 +15,7 @@ import javafx.stage.Stage;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 
+@Controller
 public class ConfigurationController {
 
 	@Autowired

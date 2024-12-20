@@ -5,8 +5,8 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="411.0" prefWidth="638.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.finance_app.finance_app.controller.HomeController">
    <children>
-      <Button fx:id="buttonRegister" layoutX="293.0" layoutY="79.0" mnemonicParsing="false" onAction="#onClickRegister" text="Button" />
-      <Button fx:id="buttonLogin" layoutX="293.0" layoutY="181.0" mnemonicParsing="false" onAction="#onClickLogin" text="Button" />
-      <Button fx:id="buttonHelp" layoutX="293.0" layoutY="281.0" mnemonicParsing="false" onAction="#onClickHelp" text="Button" />
+      <Button fx:id="buttonRegister" layoutX="293.0" layoutY="79.0" mnemonicParsing="false" onAction="#onClickRegister" text="Registrarse" />
+      <Button fx:id="buttonLogin" layoutX="293.0" layoutY="181.0" mnemonicParsing="false" onAction="#onClickLogin" text="Iniciar sesion" />
+      <Button fx:id="buttonHelp" layoutX="293.0" layoutY="281.0" mnemonicParsing="false" onAction="#onClickHelp" text="Ayuda" />
    </children>
 </AnchorPane>

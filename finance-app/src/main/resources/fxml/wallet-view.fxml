@@ -11,7 +11,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.finance_app.finance_app.controller.WalletController">
    <children>
-      <Label layoutX="301.0" layoutY="29.0" text="Label" />
+      <Label layoutX="301.0" layoutY="29.0" text="Mi billetera" />
       <StackPane layoutX="359.0" layoutY="117.0" prefHeight="150.0" prefWidth="200.0">
          <children>
             <PieChart fx:id="chart" />
@@ -26,6 +26,8 @@
           <TableColumn fx:id="transactionDate" prefWidth="75.0" text="Fecha" />
         </columns>
       </TableView>
-      <Button fx:id="closeSession" layoutX="516.0" layoutY="334.0" mnemonicParsing="false" onAction="#closeMySession" text="Button" />
+      <Button fx:id="closeSession" layoutX="501.0" layoutY="339.0" mnemonicParsing="false" onAction="#closeMySession" text="Cerrar sesion" />
+      <Button fx:id="buttonNotifications" layoutX="21.0" layoutY="339.0" mnemonicParsing="false" onAction="#goToNotifications" text="Notificaciones" />
+      <Button fx:id="buttonAsignLimit" layoutX="174.0" layoutY="339.0" mnemonicParsing="false" onAction="#goToAsignationLimit" text="Asignar limite" />
    </children>
 </AnchorPane>

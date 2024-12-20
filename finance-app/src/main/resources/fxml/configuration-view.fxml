@@ -11,14 +11,14 @@
    <children>
       <VBox layoutX="250.0" layoutY="76.0" prefHeight="110.0" prefWidth="100.0">
          <children>
-            <RadioButton fx:id="buttonRadio1" mnemonicParsing="false" text="RadioButton" />
-            <RadioButton fx:id="buttonRadio2" mnemonicParsing="false" text="RadioButton" />
-            <RadioButton fx:id="buttonRadio3" mnemonicParsing="false" text="RadioButton" />
-            <RadioButton fx:id="buttonRadio4" mnemonicParsing="false" text="RadioButton" />
+            <RadioButton fx:id="buttonRadio1" mnemonicParsing="false" text="Resolución 800x600" />
+            <RadioButton fx:id="buttonRadio2" mnemonicParsing="false" text="Resolución 1024x768" />
+            <RadioButton fx:id="buttonRadio3" mnemonicParsing="false" text="Resolución 1280x1024" />
+            <RadioButton fx:id="buttonRadio4" mnemonicParsing="false" text="Resolución 1920x1080" />
          </children>
       </VBox>
-      <Label fx:id="resolutionTittle" layoutX="286.0" layoutY="29.0" text="Label" />
-      <Button fx:id="buttonBack" layoutX="516.0" layoutY="350.0" mnemonicParsing="false" onAction="#goBack" text="Button" />
-      <Button fx:id="buttonApply" layoutX="37.0" layoutY="350.0" mnemonicParsing="false" onAction="#applyChanges" text="Button" />
+      <Label fx:id="resolutionTittle" layoutX="286.0" layoutY="29.0" text="Selecciona resolucion" />
+      <Button fx:id="buttonBack" layoutX="516.0" layoutY="350.0" mnemonicParsing="false" onAction="#goBack" text="Atras" />
+      <Button fx:id="buttonApply" layoutX="37.0" layoutY="350.0" mnemonicParsing="false" onAction="#applyChanges" text="Aplicar" />
    </children>
 </AnchorPane>

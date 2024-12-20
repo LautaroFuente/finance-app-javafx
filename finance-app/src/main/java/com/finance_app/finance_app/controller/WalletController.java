@@ -47,13 +47,13 @@ public class WalletController {
 	private Button closeSession;
 	
 	@FXML
-	private Button notifications;
+	private Button buttonNotifications;
 	
 	@FXML
 	private Button allTransactions;
 	
 	@FXML
-	private Button asignLimit;
+	private Button buttonAsignLimit;
 	
 	@FXML
 	private TableView<TransactionForListDTO> transactionList;
@@ -120,5 +120,13 @@ public class WalletController {
 	public void closeMySession(ActionEvent event) {
 		SessionManager.getInstance().logout();
 		this.goBackService.goBack(event, "/fxml/home-view.fxml");
+	}
+	
+	public void goToNotifications(ActionEvent event) {
+		this.goBackService.goBack(event, "/fxml/notification-view.fxml");
+	}
+	
+	public void goToAsignationLimit(ActionEvent event) {
+		this.goBackService.goBack(event, "/fxml/asignation-limit-view.fxml");
 	}
 }

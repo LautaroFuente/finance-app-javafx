@@ -29,5 +29,6 @@
       <Button fx:id="closeSession" layoutX="501.0" layoutY="339.0" mnemonicParsing="false" onAction="#closeMySession" text="Cerrar sesion" />
       <Button fx:id="buttonNotifications" layoutX="21.0" layoutY="339.0" mnemonicParsing="false" onAction="#goToNotifications" text="Notificaciones" />
       <Button fx:id="buttonAsignLimit" layoutX="174.0" layoutY="339.0" mnemonicParsing="false" onAction="#goToAsignationLimit" text="Asignar limite" />
+      <Button fx:id="buttonAddTransaction" layoutX="314.0" layoutY="339.0" mnemonicParsing="false" onAction="#goToAddTransaction" text="Agregar transaccion" />
    </children>
 </AnchorPane>

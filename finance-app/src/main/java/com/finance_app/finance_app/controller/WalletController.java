@@ -56,6 +56,9 @@ public class WalletController {
 	private Button buttonAsignLimit;
 	
 	@FXML
+	private Button buttonAddTransaction;
+	
+	@FXML
 	private TableView<TransactionForListDTO> transactionList;
 	
 	@FXML
@@ -128,5 +131,9 @@ public class WalletController {
 	
 	public void goToAsignationLimit(ActionEvent event) {
 		this.goBackService.goBack(event, "/fxml/asignation-limit-view.fxml");
+	}
+	
+	public void goToAddTransaction(ActionEvent event) {
+		this.goBackService.goBack(event, "/fxml/add-transaction-view.fxml");
 	}
 }

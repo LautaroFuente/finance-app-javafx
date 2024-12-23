@@ -15,6 +15,7 @@ import com.finance_app.finance_app.service.CategoryService;
 import com.finance_app.finance_app.service.GoBackService;
 import com.finance_app.finance_app.service.LimitCategoryService;
 import com.finance_app.finance_app.utils.SessionManager;
+import com.finance_app.finance_app.validation.Validator;
 
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -57,6 +58,15 @@ public class AsignationLimitController {
 	
 	@FXML
 	private Label messageAboutAsignation;
+	
+	@FXML
+	private Label errorDateTo;
+	
+	@FXML
+	private Label errorDateFrom;
+	
+	@FXML
+	private Label errorAmount;
 	
 	public void initialize() {
 		
@@ -109,15 +119,32 @@ public class AsignationLimitController {
         LocalDateTime dateToFormatted = this.dateTo.getValue().atStartOfDay();
 		
 		// Crear una nueva asignacion limite a esa categoria si se agregaron todos los campos y todos son validos
-        if(allFieldsAreCorrect()) {
+        if(allFieldsAreCorrect(dateFromFormatted, dateToFormatted, amountString)) {
         	LimitCategory limitCategory = new LimitCategory(user, categorySelected, amount, dateFromFormatted, dateToFormatted);
     		this.limitCategoryService.addLimitCategory(limitCategory);
+        }
+        // Si algun campo no es valido enviar mensaje
+        else {
+        	if(dateFromFormatted == null) {
+        		this.errorDateFrom.setText("La fecha ingresada es invalida");
+        	}
+        	
+        	if(!Validator.validateDate(dateToFormatted)) {
+        		this.errorDateTo.setText("La fecha ingresada es invalida o no puede ser posterior a la actual");
+        	}
+        	
+        	if(!Validator.validateNumericText(amountString)) {
+        		this.errorAmount.setText("El monto ingresado es invalido y no puede ser menor a cero");
+        	}
         }
 		
 	}
 	
 	// Verificar si todos los campos son validos
-	private boolean allFieldsAreCorrect() {
+	private boolean allFieldsAreCorrect(LocalDateTime dateFrom, LocalDateTime dateTo, String amount) {
+		if(!Validator.validateDate(dateTo) || !Validator.validateNumericText(amount) || dateFrom == null) {
+			return false;
+		}
 		return true;
 	}
 	

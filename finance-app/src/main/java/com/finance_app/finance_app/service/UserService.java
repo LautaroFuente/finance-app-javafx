@@ -1,5 +1,6 @@
 package com.finance_app.finance_app.service;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,5 +42,13 @@ public class UserService {
 	public User getOneUser(String email) {
 		Optional<User> usuario = this.userRepository.findByEmail(email);
 	    return usuario.orElse(null);
+	}
+	
+	public void updateBalanceWithIncome(Long idUser, BigDecimal amount) {
+		this.userRepository.updateUserBalanceWithIncome(idUser, amount);
+	}
+	
+	public void updateBalanceWithExpense(Long idUser, BigDecimal amount) {
+		this.userRepository.updateUserBalanceWithExpense(idUser, amount);
 	}
 }

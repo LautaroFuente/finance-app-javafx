@@ -3,6 +3,7 @@ CREATE TABLE User (
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL
+    balance DECIMAL(10, 2) NOT NULL DEFAULT 0.00;
 );
 
 CREATE TABLE Category (

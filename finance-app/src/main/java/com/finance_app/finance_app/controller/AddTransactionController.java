@@ -110,6 +110,8 @@ public class AddTransactionController {
 		
 		// Crear la transaccion a agregar
 		Transaction transactionForSave = new Transaction(user, amount, this.descriptionField.getText(), LocalDateTime.now(), type, category);
+		
+		// Agregar la transaccion al usuario
 		String responseAdd = this.transactionService.addTransactionForUser(transactionForSave);
 		
 		if("Transaccion guardada exitosamente".equals(responseAdd)) {

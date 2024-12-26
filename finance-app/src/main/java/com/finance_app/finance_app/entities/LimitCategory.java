@@ -28,6 +28,7 @@ public class LimitCategory {
 	private BigDecimal max_limit;
 	private LocalDateTime date_from;
 	private LocalDateTime date_to;
+	private BigDecimal total_expense;
 	
 	public LimitCategory(User user, Category category, BigDecimal max_limit, LocalDateTime date_from,
 			LocalDateTime date_to) {
@@ -37,6 +38,7 @@ public class LimitCategory {
 		this.max_limit = max_limit;
 		this.date_from = date_from;
 		this.date_to = date_to;
+		this.total_expense = new BigDecimal(0.00);
 	}
 
 	public LimitCategory() {
@@ -86,6 +88,13 @@ public class LimitCategory {
 	public Long getId() {
 		return id;
 	}
-	
+
+	public BigDecimal getTotal_expense() {
+		return total_expense;
+	}
+
+	public void setTotal_expense(BigDecimal total_expense) {
+		this.total_expense = total_expense;
+	}	
 	
 }

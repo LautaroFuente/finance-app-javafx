@@ -13,4 +13,8 @@ public interface NotificationRepository extends JpaRepository<Notification, Long
 
 	@Query("SELECT n FROM Notification n WHERE n.user.id = :user_id ORDER BY n.date")
     Page<Notification> getAllNotificationForUser(@Param("user_id") Long user_id, Pageable pageable);
+	
+	@Query("SELECT COUNT(n) FROM Notification n WHERE n.user.id = :user_id")
+	Integer getNumberOfNotificationFromUser(@Param("user_id") Long user_id);
+
 }

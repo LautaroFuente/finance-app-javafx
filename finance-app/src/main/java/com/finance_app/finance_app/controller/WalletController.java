@@ -1,17 +1,23 @@
 package com.finance_app.finance_app.controller;
 
+import java.math.BigDecimal;
+import java.text.NumberFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import com.finance_app.finance_app.DTO.CategoryPercentageDTO;
 import com.finance_app.finance_app.DTO.TransactionForListDTO;
+import com.finance_app.finance_app.entities.Wallet;
 import com.finance_app.finance_app.service.ChartDataService;
 import com.finance_app.finance_app.service.GoBackService;
+import com.finance_app.finance_app.service.NotificationService;
 import com.finance_app.finance_app.service.TransactionListDataService;
+import com.finance_app.finance_app.service.WalletService;
 import com.finance_app.finance_app.utils.SessionManager;
 
 import javafx.beans.property.SimpleDoubleProperty;
@@ -21,9 +27,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+
 
 @Controller
 public class WalletController {
@@ -36,6 +50,12 @@ public class WalletController {
 	
 	@Autowired
 	private TransactionListDataService transactionListDataService;
+	
+	@Autowired
+	private NotificationService notificationService;
+	
+	@Autowired
+	private WalletService walletService;
 
 	@FXML
 	private PieChart chart;
@@ -59,6 +79,18 @@ public class WalletController {
 	private Button buttonAddTransaction;
 	
 	@FXML
+	private Label totalWallet;
+	
+	@FXML
+	private StackPane notificationStack;
+	
+	@FXML
+	private ImageView bellIcon;
+	
+	@FXML
+	private Label notificationCountLabel;
+	
+	@FXML
 	private TableView<TransactionForListDTO> transactionList;
 	
 	@FXML
@@ -73,6 +105,8 @@ public class WalletController {
 	@FXML
 	private TableColumn<TransactionForListDTO, String> transactionDate;
 	
+	private IntegerProperty notificationCount = new SimpleIntegerProperty(0);  // Propiedad reactiva para las notificaciones
+	
 	public void initialize() {
 		// Configurar grafico dona
 		this.initChart();
@@ -80,6 +114,80 @@ public class WalletController {
 		// Configurar lista transacciones
 		this.initList();
 		
+		// Iniciar el total de la billetera
+		this.initTotalWallet();
+		
+		// Iniciar el icono y su numero de notificaciones
+		this.initNotifications();
+	}
+	
+	private void initNotifications() {
+		// Vincular el texto del Label al contador de notificaciones
+        notificationCountLabel.textProperty().bind(Bindings.format("%d", notificationCount));
+
+        // Establecer estilo inicial para la campana de notificación
+        bellIcon.setStyle("-fx-background-color: transparent;");
+        // Establecer imagen inicial
+        updateBellIcon();
+
+        // Oobtener el número de notificaciones
+        updateNotificationCountFromService();
+
+	}
+	
+    private void updateNotificationCountFromService() {
+        // Llamar a servicio para obtener el numero de notificaciones
+        int newNotificationCount = this.notificationService.getNumberOfNotificationFromUser(SessionManager.getInstance().getUser().getId());
+
+        // Actualizar la propiedad con el nuevo valor
+        notificationCount.set(newNotificationCount);
+
+        // Si el número de notificaciones es mayor que 0, mostramos el contador
+        if (newNotificationCount > 0) {
+            notificationCountLabel.setVisible(true); 
+        } else {
+            notificationCountLabel.setVisible(false); 
+        }
+
+        // Actualizar la imagen de la campana en funcion de las notificaciones
+        updateBellIcon();
+    }
+
+    // Actualiza la imagen de la campana dependiendo de las notificaciones
+    private void updateBellIcon() {
+        if (notificationCount.get() > 0) {
+
+            bellIcon.setImage(new Image(getClass().getResourceAsStream(bellWithNotificationsPath)));
+        } else {
+        	
+            bellIcon.setImage(new Image(getClass().getResourceAsStream(bellNoNotificationsPath)));
+        }
+    }
+	
+	private void initTotalWallet() {
+		
+		// Conseguir la billetera
+		Wallet walletUser = this.walletService.getOneWallet(SessionManager.getInstance().getUser().getId());
+		
+		// Si no se consigue la billetera mostrar error en total
+		if(walletUser == null) {
+			this.totalWallet.setText("Error al cargar total");
+			return;
+		}
+		
+		// Conseguir el total de la billetera
+		BigDecimal total = walletUser.getTotal();
+		
+		// Usar el formato de moneda para Argentina
+        @SuppressWarnings("deprecation")
+		Locale argentinaLocale = new Locale("es", "AR");
+        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(argentinaLocale);
+
+        // Formatear el total
+        String formattedTotal = currencyFormat.format(total);
+        
+        // Asignar al label
+        this.totalWallet.setText(formattedTotal);
 	}
 	
 	private void initChart() {

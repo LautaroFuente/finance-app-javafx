@@ -3,7 +3,6 @@ CREATE TABLE User (
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL
-    balance DECIMAL(10, 2) NOT NULL DEFAULT 0.00;
 );
 
 CREATE TABLE Category (
@@ -37,6 +36,7 @@ CREATE TABLE LimitCategory (
     max_limit DECIMAL(10, 2) NOT NULL,
     date_from DATE NOT NULL,
     date_to DATE NOT NULL,
+    total_expense DECIMAL(10, 2) DEFAULT 0.00,
     FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE CASCADE,
     FOREIGN KEY (category_id) REFERENCES Category(id) ON DELETE CASCADE
 );

@@ -21,10 +21,10 @@ public class TransactionService {
 	private TransactionRepository transactionRepository;
 	
 	@Autowired
-	private UserService userService;
+	private WalletService walletService;
 	
 	@Autowired
-	private ExceedLimitCategoryService exceedLimitCategoryService;
+	private LimitCategoryService limitCategoryService;
 	
 	public List<Object[]> getPercentageByCategoryForUser(Long userId, LocalDate startOfMonth, LocalDate endOfMonth){
 		return this.transactionRepository.getPercentageByCategoryForUser(userId, startOfMonth, endOfMonth);
@@ -44,13 +44,13 @@ public class TransactionService {
 	        	
 	        	// Asignar nuevo saldo del usuario	        	
 	        	if(transactionSaved.getType() == TransactionType.INGRESO) {
-	        		this.userService.updateBalanceWithIncome(SessionManager.getInstance().getUser().getId(), transactionSaved.getAmount());
+	        		this.walletService.updateWalletTotalWithIncome(SessionManager.getInstance().getUser().getId(), transactionSaved.getAmount());
 	        	}
 	        	else if(transactionSaved.getType() == TransactionType.GASTO) {
-	        		this.userService.updateBalanceWithExpense(SessionManager.getInstance().getUser().getId(), transactionSaved.getAmount());
+	        		this.walletService.updateWalletTotalWithIncome(SessionManager.getInstance().getUser().getId(), transactionSaved.getAmount());
 	        		
-	        		// Verificar si la transaccion acaba de superar algun limite establecido
-	        		this.exceedLimitCategoryService.checkExceedLimit(SessionManager.getInstance().getUser(), transactionSaved.getCategory());
+	        		// Llamar a LimitCategoryService para que se actualice (si existe) el total gastado de un limite asignado a una categoria
+	        		this.limitCategoryService.updateTotalIfExistLimitVigent(transactionSaved);
 	        	}
 	        	
 	            return "Transacción guardada exitosamente";

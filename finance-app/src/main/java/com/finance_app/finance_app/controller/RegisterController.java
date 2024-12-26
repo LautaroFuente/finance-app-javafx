@@ -5,9 +5,11 @@ import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.finance_app.finance_app.service.GoBackService;
 import com.finance_app.finance_app.service.UserService;
+import com.finance_app.finance_app.service.WalletService;
 import com.finance_app.finance_app.validation.Validator;
 
 import javafx.event.ActionEvent;
@@ -30,6 +32,9 @@ public class RegisterController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private WalletService walletService;
 
 	@Autowired
 	private ApplicationContext context;
@@ -62,6 +67,7 @@ public class RegisterController {
     private Button buttonBack;
 	
 	@FXML
+	@Transactional
 	public void onSubmit(ActionEvent event) {
 		
 		cleanErrorFields();
@@ -87,6 +93,14 @@ public class RegisterController {
 		
 		if("Usuario registrado exitosamente".equals(responseRegister)) {
 			this.responseMessage.setText("Usuario registrado exitosamente");
+			
+			// Crear billetera y asociarla al nuevo usuario
+			try {
+                this.walletService.addWallet(this.userService.getOneUser(this.emailField.getText()));
+            } catch (Exception e) {
+                // Si ocurre un error al crear la billetera, deshacer la transacción de usuario
+                throw new RuntimeException("Error al crear la billetera para el usuario", e);
+            }
 			
 			try {
 				FXMLLoader loader = new FXMLLoader();

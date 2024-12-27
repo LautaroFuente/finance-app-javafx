@@ -43,4 +43,8 @@ public class UserService {
 	    return usuario.orElse(null);
 	}
 	
+	public void deleteUser(User user) {
+		this.userRepository.delete(user);
+	}
+	
 }

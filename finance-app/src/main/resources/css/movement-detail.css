@@ -1,0 +1,69 @@
+/* Estilos generales */
+* {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-size: 14px;
+    -fx-base: #f4f4f9;
+    -fx-background-color: #f4f4f9;
+}
+
+/* Títulos de transacción */
+#transactionType,
+#transactionAmount,
+#transactionNameCategory,
+#transactionDate {
+    -fx-font-size: 16px;
+    -fx-text-fill: #333;
+    -fx-font-weight: normal;
+}
+
+/* Ajustes específicos para cada label */
+#transactionType {
+    -fx-font-weight: bold;
+    -fx-text-fill: #4CAF50; /* Verde para tipo de transacción */
+}
+
+#transactionAmount {
+    -fx-text-fill: #FF5722; /* Naranja para monto */
+}
+
+#transactionNameCategory {
+    -fx-text-fill: #607D8B; /* Gris para nombre de categoría */
+}
+
+#transactionDate {
+    -fx-text-fill: #3F51B5; /* Azul para fecha */
+}
+
+/* Botón "Atras" */
+#buttonBack {
+    -fx-background-color: #f44336;
+    -fx-text-fill: white;
+    -fx-pref-width: 100px;
+    -fx-font-size: 16px;
+    -fx-background-radius: 5px;
+}
+
+#buttonBack:hover {
+    -fx-background-color: #e53935;
+}
+
+#buttonBack:pressed {
+    -fx-background-color: #d32f2f;
+}
+
+/* Estilo general de la vista */
+AnchorPane {
+    -fx-background-color: #fafafa;
+    -fx-padding: 20px;
+}
+
+/* Alineación y organización de los elementos */
+.children {
+    -fx-alignment: center;
+    -fx-spacing: 20px;
+}
+
+/* Ajuste de la posición y margen de los labels */
+Label {
+    -fx-padding: 5px;
+}

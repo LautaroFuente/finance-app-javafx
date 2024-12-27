@@ -3,7 +3,10 @@ package com.finance_app.finance_app.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import com.finance_app.finance_app.entities.User;
 import com.finance_app.finance_app.service.GoBackService;
+import com.finance_app.finance_app.service.UserService;
+import com.finance_app.finance_app.utils.SessionManager;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,6 +23,9 @@ public class ConfigurationController {
 
 	@Autowired
 	private GoBackService goBackService;
+	
+	@Autowired
+	private UserService userService;
 	
 	@FXML
 	private AnchorPane root;
@@ -44,6 +50,9 @@ public class ConfigurationController {
 	
 	@FXML
 	private ToggleGroup toggleGroup;
+	
+	@FXML
+	private Button deleteAccount;
 	
 	public void initialize() {
         // Crear el ToggleGroup
@@ -115,5 +124,12 @@ public class ConfigurationController {
         } else {
             System.out.println("No se ha seleccionado ninguna resolución.");
         }
+	}
+	
+	public void deleteAccountConfirm(ActionEvent event) {
+		User userToDelete = SessionManager.getInstance().getUser();
+		SessionManager.getInstance().logout();
+		this.userService.deleteUser(userToDelete);
+		this.goBackService.goBack(event, "/fxml/home-view.fxml");
 	}
 }

@@ -8,6 +8,8 @@ import javafx.stage.Stage;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import io.github.cdimascio.dotenv.Dotenv;
+
 import java.io.IOException;
 
 public class JavaFXSpringBootApp extends Application {
@@ -15,6 +17,12 @@ public class JavaFXSpringBootApp extends Application {
     private ConfigurableApplicationContext context;
     
     public static void main(String[] args) {
+    	
+    	Dotenv dotenv = Dotenv.load();
+        System.setProperty("DB_URL", dotenv.get("DB_URL"));
+        System.setProperty("DB_USERNAME", dotenv.get("DB_USERNAME"));
+        System.setProperty("DB_PASSWORD", dotenv.get("DB_PASSWORD"));
+    	
         launch(args);  // Inicia JavaFX
     }
 

@@ -1,0 +1,79 @@
+/* Estilos generales */
+* {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-size: 14px;
+    -fx-base: #f4f4f9;
+    -fx-background-color: #f4f4f9;
+}
+
+/* Título de la vista */
+#title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333;
+}
+
+/* ListView (notificaciones) */
+#notificationList {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1px;
+    -fx-font-size: 14px;
+    -fx-padding: 5px;
+    -fx-alignment: top-left;
+}
+
+/* Elementos dentro de la lista */
+#notificationList .list-cell {
+    -fx-font-size: 14px;
+    -fx-padding: 10px;
+    -fx-text-fill: #333;
+    -fx-background-color: #ffffff;
+}
+
+/* Elemento de lista al pasar el mouse */
+#notificationList .list-cell:hover {
+    -fx-background-color: #e0e0e0;
+}
+
+/* Botón "Atrás" */
+#buttonBack {
+    -fx-background-color: #f44336;
+    -fx-text-fill: white;
+    -fx-pref-width: 100px;
+    -fx-font-size: 14px;
+    -fx-background-radius: 5px;
+}
+
+#buttonBack:hover {
+    -fx-background-color: #e53935;
+}
+
+#buttonBack:pressed {
+    -fx-background-color: #d32f2f;
+}
+
+/* Mensajes de error o información */
+#messageAboutList {
+    -fx-font-size: 14px;
+    -fx-text-fill: #FF5722; /* Naranja para errores */
+    -fx-font-weight: bold;
+    -fx-padding: 10px;
+}
+
+/* Alineación y organización de los elementos */
+AnchorPane {
+    -fx-background-color: #fafafa;
+    -fx-padding: 20px;
+}
+
+/* Alineación y espaciado de los elementos */
+.children {
+    -fx-alignment: center;
+    -fx-spacing: 20px;
+}
+
+/* Ajuste de la posición y margen de los labels */
+Label {
+    -fx-padding: 5px;
+}

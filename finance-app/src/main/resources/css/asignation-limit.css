@@ -1,0 +1,111 @@
+/* Estilos generales */
+* {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-size: 14px;
+    -fx-base: #f4f4f9;
+    -fx-background-color: #f4f4f9;
+}
+
+/* Título principal */
+#tittle {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333;
+}
+
+/* Títulos de campos */
+Label {
+    -fx-text-fill: #5f6368;
+    -fx-font-size: 16px;
+}
+
+/* Campos de texto */
+TextField, ComboBox, DatePicker {
+    -fx-pref-width: 150px;
+    -fx-font-size: 14px;
+    -fx-background-color: #fff;
+    -fx-border-color: #ccc;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px;
+}
+
+/* DatePicker */
+DatePicker {
+    -fx-background-color: #fff;
+    -fx-border-color: #ccc;
+    -fx-border-radius: 5px;
+    -fx-font-size: 14px;
+}
+
+/* Botones */
+Button {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-pref-width: 120px;
+    -fx-pref-height: 40px;
+    -fx-background-radius: 5px;
+    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.2), 2, 0.5, 0, 2);
+}
+
+Button:hover {
+    -fx-background-color: #45a049;
+}
+
+Button:pressed {
+    -fx-background-color: #3e8e41;
+}
+
+/* Botón "Atras" */
+#backButton {
+    -fx-background-color: #f44336;
+    -fx-text-fill: white;
+    -fx-pref-width: 100px;
+}
+
+#backButton:hover {
+    -fx-background-color: #e53935;
+}
+
+#backButton:pressed {
+    -fx-background-color: #d32f2f;
+}
+
+/* Etiquetas de error */
+#errorAmount, #errorDateFrom, #errorDateTo {
+    -fx-text-fill: red;
+    -fx-font-size: 12px;
+    -fx-font-style: italic;
+    -fx-opacity: 0;
+}
+
+#errorAmount.visible, #errorDateFrom.visible, #errorDateTo.visible {
+    -fx-opacity: 1;
+}
+
+/* Estilo para el formulario */
+.AnchorPane {
+    -fx-padding: 20px;
+}
+
+/* Estilo general del formulario */
+.children {
+    -fx-spacing: 15px;
+}
+
+/* Fondo de la vista */
+AnchorPane {
+    -fx-background-color: #fafafa;
+}
+
+/* Estilo para el DatePicker */
+DatePicker {
+    -fx-background-color: white;
+    -fx-border-color: #ccc;
+    -fx-border-radius: 5px;
+    -fx-font-size: 14px;
+}
+
+DatePicker:focused {
+    -fx-border-color: #4CAF50;
+}

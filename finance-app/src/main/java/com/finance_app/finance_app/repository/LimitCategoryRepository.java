@@ -11,7 +11,7 @@ import com.finance_app.finance_app.entities.LimitCategory;
 
 public interface LimitCategoryRepository extends JpaRepository<LimitCategory, Long>{
 
-	@Query("SELECT lc FROM LimitCategory lc WHERE lc.user.id = :userId AND lc.category.id = :categoryId AND lc.dateFrom <= :date AND lc.dateTo >= :date")
+	@Query("SELECT lc FROM LimitCategory lc WHERE lc.user.id = :userId AND lc.category.id = :categoryId AND lc.date_from <= :date AND lc.date_to >= :date")
 	List<LimitCategory> findActiveLimitsForCategory(@Param("userId") Long userId, 
 	                                                @Param("categoryId") Long categoryId, 
 	                                                @Param("date") LocalDateTime date);

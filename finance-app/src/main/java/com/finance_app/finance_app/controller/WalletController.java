@@ -156,11 +156,12 @@ public class WalletController {
     // Actualiza la imagen de la campana dependiendo de las notificaciones
     private void updateBellIcon() {
         if (notificationCount.get() > 0) {
-
-            bellIcon.setImage(new Image(getClass().getResourceAsStream(bellWithNotificationsPath)));
+        	Image image = new Image(getClass().getResourceAsStream("/images/bell_with_notifications.png"));
+            bellIcon.setImage(image);
         } else {
-        	
-            bellIcon.setImage(new Image(getClass().getResourceAsStream(bellNoNotificationsPath)));
+        	Image image = new Image(getClass().getResourceAsStream("/images/bell_without_notifications.png"));
+            bellIcon.setImage(image);
+            
         }
     }
 	

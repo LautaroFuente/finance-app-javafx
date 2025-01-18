@@ -61,9 +61,12 @@ public class HomeController {
 
             // Obtener el Stage actual (la ventana)
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();  // Usamos `event.getSource()` para obtener el origen del evento (el botón)
+            
+            double currentWidth = stage.getWidth();
+            double currentHeight = stage.getHeight();
 
             // Crear la nueva escena y mostrarla
-            Scene scene = new Scene(root);
+            Scene scene = new Scene(root, currentWidth, currentHeight);
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {

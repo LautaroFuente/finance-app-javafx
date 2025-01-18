@@ -50,6 +50,7 @@ public class JavaFXSpringBootApp extends Application {
         Scene scene = new Scene(root, 800, 600);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Mi App de Finanzas");
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 

@@ -5,26 +5,20 @@ import java.io.IOException;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 
-import io.github.cdimascio.dotenv.Dotenv;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class InitJavaFX extends Application{
 	
 	private ConfigurableApplicationContext context;
 
-	public static void main(String[] args) {
-		
-		Dotenv dotenv = Dotenv.load();
-    	System.setProperty("DB_URL", dotenv.get("DB_URL"));
-    	System.setProperty("DB_USERNAME", dotenv.get("DB_USERNAME"));
-    	System.setProperty("DB_PASSWORD", dotenv.get("DB_PASSWORD"));
+	public static void main(String[] args) {	
 		launch(args);
 	}
 	
@@ -46,7 +40,7 @@ public class InitJavaFX extends Application{
 	        loader.setControllerFactory(context::getBean);
 			
 			// Cargar el archivo FXML
-			AnchorPane root = loader.load();
+	        VBox root = loader.load();
 
 			// Crear la escena y configurar el escenario
 			Scene scene = new Scene(root, 800, 600);

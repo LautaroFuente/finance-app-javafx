@@ -1,26 +1,20 @@
 package com.finance_app.finance_app.controller;
 
-import java.io.IOException;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 
+import com.finance_app.finance_app.service.GoBackService;
+
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.stage.Stage;
-import javafx.scene.Node;
 
 @Controller
 public class HomeController {
-
+	
 	@Autowired
-	private ApplicationContext context;
-
+	private GoBackService loadNewViewService;
 	
 	@FXML
     private Button buttonRegister;
@@ -30,48 +24,28 @@ public class HomeController {
 	
 	@FXML
     private Button buttonHelp;
+	
+	@FXML
+	private Button buttonExit;
 
     @FXML
     public void onClickRegister(ActionEvent event) {
-        this.loadView("/fxml/register-view.fxml", event);
+        this.loadNewViewService.goBack(event, "/fxml/register-view.fxml");
     }
     
     @FXML
     public void onClickLogin(ActionEvent event) {
-    	this.loadView("/fxml/login-view.fxml", event);
+    	this.loadNewViewService.goBack(event, "/fxml/login-view.fxml");
     }
     
     @FXML
     public void onClickHelp(ActionEvent event) {
-    	this.loadView("/fxml/help-view.fxml", event);
+    	this.loadNewViewService.goBack(event, "/fxml/help-view.fxml");
     }
     
     @FXML
-    private void loadView(String fxml, ActionEvent event) {
-        try {
-            // Cargar el archivo FXML
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource(fxml));
-
-            // Aquí Spring inyecta automáticamente el controlador desde el contexto de Spring
-            loader.setControllerFactory(context::getBean);
-
-            // Cargar la vista
-            Parent root = loader.load();
-
-            // Obtener el Stage actual (la ventana)
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();  // Usamos `event.getSource()` para obtener el origen del evento (el botón)
-            
-            double currentWidth = stage.getWidth();
-            double currentHeight = stage.getHeight();
-
-            // Crear la nueva escena y mostrarla
-            Scene scene = new Scene(root, currentWidth, currentHeight);
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void onClickExit() {
+    	Platform.exit(); // Cierra JavaFX
     }
 
 }

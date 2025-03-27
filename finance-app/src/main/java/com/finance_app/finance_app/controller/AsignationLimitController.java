@@ -12,7 +12,7 @@ import com.finance_app.finance_app.entities.Category;
 import com.finance_app.finance_app.entities.LimitCategory;
 import com.finance_app.finance_app.entities.User;
 import com.finance_app.finance_app.service.CategoryService;
-import com.finance_app.finance_app.service.GoBackService;
+import com.finance_app.finance_app.service.LoadNewViewService;
 import com.finance_app.finance_app.service.LimitCategoryService;
 import com.finance_app.finance_app.utils.SessionManager;
 import com.finance_app.finance_app.validation.Validator;
@@ -30,7 +30,7 @@ import javafx.scene.control.TextField;
 public class AsignationLimitController {
 
 	@Autowired
-	private GoBackService goBackService;
+	private LoadNewViewService goBackService;
 	
 	@Autowired
 	private CategoryService categoryService;
@@ -149,6 +149,6 @@ public class AsignationLimitController {
 	}
 	
 	public void goBack(ActionEvent event) {
-		this.goBackService.goBack(event, "/fxml/wallet-view.fxml");
+		this.goBackService.loadNewView(event, "/fxml/wallet-view.fxml");
 	}
 }

@@ -14,7 +14,7 @@ import com.finance_app.finance_app.DTO.CategoryPercentageDTO;
 import com.finance_app.finance_app.DTO.TransactionForListDTO;
 import com.finance_app.finance_app.entities.Wallet;
 import com.finance_app.finance_app.service.ChartDataService;
-import com.finance_app.finance_app.service.GoBackService;
+import com.finance_app.finance_app.service.LoadNewViewService;
 import com.finance_app.finance_app.service.NotificationService;
 import com.finance_app.finance_app.service.TransactionListDataService;
 import com.finance_app.finance_app.service.WalletService;
@@ -46,7 +46,7 @@ public class WalletController {
 	private ChartDataService chartDataService;
 	
 	@Autowired
-	private GoBackService goBackService;
+	private LoadNewViewService goBackService;
 	
 	@Autowired
 	private TransactionListDataService transactionListDataService;
@@ -231,18 +231,18 @@ public class WalletController {
 	
 	public void closeMySession(ActionEvent event) {
 		SessionManager.getInstance().logout();
-		this.goBackService.goBack(event, "/fxml/home-view.fxml");
+		this.goBackService.loadNewView(event, "/fxml/home-view.fxml");
 	}
 	
 	public void goToNotifications(ActionEvent event) {
-		this.goBackService.goBack(event, "/fxml/notification-view.fxml");
+		this.goBackService.loadNewView(event, "/fxml/notification-view.fxml");
 	}
 	
 	public void goToAsignationLimit(ActionEvent event) {
-		this.goBackService.goBack(event, "/fxml/asignation-limit-view.fxml");
+		this.goBackService.loadNewView(event, "/fxml/asignation-limit-view.fxml");
 	}
 	
 	public void goToAddTransaction(ActionEvent event) {
-		this.goBackService.goBack(event, "/fxml/add-transaction-view.fxml");
+		this.goBackService.loadNewView(event, "/fxml/add-transaction-view.fxml");
 	}
 }

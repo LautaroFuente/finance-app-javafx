@@ -12,7 +12,7 @@ import com.finance_app.finance_app.entities.Transaction;
 import com.finance_app.finance_app.entities.User;
 import com.finance_app.finance_app.enums.TransactionType;
 import com.finance_app.finance_app.service.CategoryService;
-import com.finance_app.finance_app.service.GoBackService;
+import com.finance_app.finance_app.service.LoadNewViewService;
 import com.finance_app.finance_app.service.TransactionService;
 import com.finance_app.finance_app.utils.SessionManager;
 import com.finance_app.finance_app.validation.Validator;
@@ -29,7 +29,7 @@ import javafx.scene.control.TextField;
 public class AddTransactionController {
 
 	@Autowired
-	private GoBackService goBackService;
+	private LoadNewViewService goBackService;
 	
 	@Autowired
 	private TransactionService transactionService;
@@ -131,6 +131,6 @@ public class AddTransactionController {
 	}
 	
 	public void goBack(ActionEvent event) {
-		this.goBackService.goBack(event, "/fxml/wallet-view.fxml");
+		this.goBackService.loadNewView(event, "/fxml/wallet-view.fxml");
 	}
 }

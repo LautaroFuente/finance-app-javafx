@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller;
 
 import com.finance_app.finance_app.entities.Notification;
 import com.finance_app.finance_app.entities.User;
-import com.finance_app.finance_app.service.GoBackService;
+import com.finance_app.finance_app.service.LoadNewViewService;
 import com.finance_app.finance_app.service.NotificationService;
 import com.finance_app.finance_app.utils.SessionManager;
 
@@ -26,7 +26,7 @@ import javafx.scene.control.ScrollBar;
 public class NotificationController {
 	
 	@Autowired
-	private GoBackService goBackService;
+	private LoadNewViewService goBackService;
 	
 	@Autowired
 	private NotificationService notificationService;
@@ -105,6 +105,6 @@ public class NotificationController {
 	}
 	
 	public void goBack(ActionEvent event) {
-		this.goBackService.goBack(event, "/fxml/wallet-view.fxml");
+		this.goBackService.loadNewView(event, "/fxml/wallet-view.fxml");
 	}
 }

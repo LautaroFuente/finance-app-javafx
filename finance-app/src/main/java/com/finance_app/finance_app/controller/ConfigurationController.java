@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import com.finance_app.finance_app.entities.User;
-import com.finance_app.finance_app.service.GoBackService;
+import com.finance_app.finance_app.service.LoadNewViewService;
 import com.finance_app.finance_app.service.UserService;
 import com.finance_app.finance_app.utils.SessionManager;
 
@@ -22,7 +22,7 @@ import javafx.scene.Scene;
 public class ConfigurationController {
 
 	@Autowired
-	private GoBackService goBackService;
+	private LoadNewViewService goBackService;
 	
 	@Autowired
 	private UserService userService;
@@ -87,7 +87,7 @@ public class ConfigurationController {
 	}
 	
 	public void goBack(ActionEvent event) {
-		this.goBackService.goBack(event, "/fxml/wallet-view.fxml");
+		this.goBackService.loadNewView(event, "/fxml/wallet-view.fxml");
 	}
 	
 	public void applyChanges(ActionEvent event) {
@@ -130,6 +130,6 @@ public class ConfigurationController {
 		User userToDelete = SessionManager.getInstance().getUser();
 		SessionManager.getInstance().logout();
 		this.userService.deleteUser(userToDelete);
-		this.goBackService.goBack(event, "/fxml/home-view.fxml");
+		this.goBackService.loadNewView(event, "/fxml/home-view.fxml");
 	}
 }

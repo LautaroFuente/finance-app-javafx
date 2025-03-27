@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 
 import com.finance_app.finance_app.entities.User;
 import com.finance_app.finance_app.service.AuthService;
-import com.finance_app.finance_app.service.GoBackService;
+import com.finance_app.finance_app.service.LoadNewViewService;
 import com.finance_app.finance_app.service.UserService;
 import com.finance_app.finance_app.utils.SessionManager;
 import com.finance_app.finance_app.validation.Validator;
@@ -32,7 +32,7 @@ public class LoginController {
 	private UserService userService;
 	
 	@Autowired
-	private GoBackService goBackService;
+	private LoadNewViewService goBackService;
 	
 	@Autowired
 	private AuthService authService;
@@ -118,6 +118,6 @@ public class LoginController {
 	}
 	
 	public void goBack(ActionEvent event) {
-		this.goBackService.goBack(event, "/fxml/home-view.fxml");
+		this.goBackService.loadNewView(event, "/fxml/home-view.fxml");
 	}
 }

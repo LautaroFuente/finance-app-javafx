@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import com.finance_app.finance_app.DTO.TransactionForListDTO;
-import com.finance_app.finance_app.service.GoBackService;
+import com.finance_app.finance_app.service.LoadNewViewService;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,7 +17,7 @@ import javafx.scene.control.Label;
 public class MovementDetailController {
 
 	@Autowired
-	private GoBackService goBackService;
+	private LoadNewViewService goBackService;
 	
 	private TransactionForListDTO transaction;
 
@@ -57,6 +57,6 @@ public class MovementDetailController {
 	}
 	
 	public void goBack(ActionEvent event) {
-		this.goBackService.goBack(event, "/fxml/movement-list-view.fxml");
+		this.goBackService.loadNewView(event, "/fxml/movement-list-view.fxml");
 	}
 }

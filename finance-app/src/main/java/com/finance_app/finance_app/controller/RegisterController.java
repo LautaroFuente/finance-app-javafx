@@ -7,7 +7,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.finance_app.finance_app.service.GoBackService;
+import com.finance_app.finance_app.service.LoadNewViewService;
 import com.finance_app.finance_app.service.UserService;
 import com.finance_app.finance_app.service.WalletService;
 import com.finance_app.finance_app.validation.Validator;
@@ -28,7 +28,7 @@ import javafx.stage.Stage;
 public class RegisterController {
 	
 	@Autowired
-	private GoBackService goBackService;
+	private LoadNewViewService goBackService;
 	
 	@Autowired
 	private UserService userService;
@@ -143,6 +143,6 @@ public class RegisterController {
 	}
 	
 	public void goBack(ActionEvent event) {
-		this.goBackService.goBack(event, "/fxml/home-view.fxml");
+		this.goBackService.loadNewView(event, "/fxml/home-view.fxml");
 	}
 }

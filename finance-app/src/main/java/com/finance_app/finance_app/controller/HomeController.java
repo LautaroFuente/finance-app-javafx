@@ -3,7 +3,7 @@ package com.finance_app.finance_app.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import com.finance_app.finance_app.service.GoBackService;
+import com.finance_app.finance_app.service.LoadNewViewService;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -14,7 +14,7 @@ import javafx.scene.control.Button;
 public class HomeController {
 	
 	@Autowired
-	private GoBackService loadNewViewService;
+	private LoadNewViewService loadNewViewService;
 	
 	@FXML
     private Button buttonRegister;
@@ -30,17 +30,17 @@ public class HomeController {
 
     @FXML
     public void onClickRegister(ActionEvent event) {
-        this.loadNewViewService.goBack(event, "/fxml/register-view.fxml");
+        this.loadNewViewService.loadNewView(event, "/fxml/register-view.fxml");
     }
     
     @FXML
     public void onClickLogin(ActionEvent event) {
-    	this.loadNewViewService.goBack(event, "/fxml/login-view.fxml");
+    	this.loadNewViewService.loadNewView(event, "/fxml/login-view.fxml");
     }
     
     @FXML
     public void onClickHelp(ActionEvent event) {
-    	this.loadNewViewService.goBack(event, "/fxml/help-view.fxml");
+    	this.loadNewViewService.loadNewView(event, "/fxml/help-view.fxml");
     }
     
     @FXML

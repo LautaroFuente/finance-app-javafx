@@ -10,7 +10,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 
 import com.finance_app.finance_app.DTO.TransactionForListDTO;
-import com.finance_app.finance_app.service.GoBackService;
+import com.finance_app.finance_app.service.LoadNewViewService;
 import com.finance_app.finance_app.service.TransactionListDataService;
 
 import javafx.beans.property.SimpleDoubleProperty;
@@ -36,7 +36,7 @@ public class MovementListController {
 	private ApplicationContext context;
 	
 	@Autowired
-	private GoBackService goBackService;
+	private LoadNewViewService goBackService;
 	
 	@Autowired
 	private TransactionListDataService transactionListDataService;
@@ -204,7 +204,7 @@ public class MovementListController {
 	    }
 	
 	public void goBack(ActionEvent event) {
-		this.goBackService.goBack(event, "/fxml/wallet-view.fxml");
+		this.goBackService.loadNewView(event, "/fxml/wallet-view.fxml");
 	}
 	
 }

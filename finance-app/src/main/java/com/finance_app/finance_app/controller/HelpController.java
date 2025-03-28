@@ -13,12 +13,12 @@ import javafx.scene.control.Button;
 public class HelpController {
 
 	@Autowired
-	private LoadNewViewService goBackService;
+	private LoadNewViewService loadNewViewService;
 	
 	@FXML
 	private Button buttonBack;
 	
 	public void goBack(ActionEvent event) {
-		this.goBackService.loadNewView(event, "/fxml/home-view.fxml");
+		this.loadNewViewService.loadNewView(event, "/fxml/home-view.fxml");
 	}
 }

@@ -28,7 +28,7 @@ import javafx.stage.Stage;
 public class RegisterController {
 	
 	@Autowired
-	private LoadNewViewService goBackService;
+	private LoadNewViewService loadNewViewService;
 	
 	@Autowired
 	private UserService userService;
@@ -142,7 +142,7 @@ public class RegisterController {
 		this.errorPasswordField.setText("");
 	}
 	
-	public void goBack(ActionEvent event) {
-		this.goBackService.loadNewView(event, "/fxml/home-view.fxml");
+	public void loadNewView(ActionEvent event) {
+		this.loadNewViewService.loadNewView(event, "/fxml/home-view.fxml");
 	}
 }

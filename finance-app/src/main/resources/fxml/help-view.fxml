@@ -8,15 +8,11 @@
 <VBox alignment="CENTER" prefHeight="411.0" prefWidth="638.0" spacing="30" stylesheets="@/css/help.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.finance_app.finance_app.controller.HelpController">
    
    <children>
-      <Label layoutX="286.0" layoutY="39.0" text="Ayuda" />
-      <Label layoutX="286.0" layoutY="143.0" text="Ayuda" />
-      <Label layoutX="286.0" layoutY="257.0" text="Ayuda" />
-      <Label layoutX="286.0" layoutY="68.0" text="Ayuda" />
-      <Label layoutX="286.0" layoutY="173.0" text="Ayuda" />
-      <Label layoutX="286.0" layoutY="285.0" text="Ayuda" />
-      <HBox alignment="BOTTOM_RIGHT" prefHeight="98.0" prefWidth="638.0">
+      <Label prefHeight="255.0" prefWidth="452.0" styleClass="help-label" text="Para cualquier error o consulta enviar al siguiente correo: lautaro.fuente@yahoo.com" textAlignment="CENTER" wrapText="true" />
+
+      <HBox alignment="BOTTOM_RIGHT" prefHeight="57.0" prefWidth="638.0" styleClass="bottom-box">
          <children>
-            <Button fx:id="buttonBack" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goBack" text="Atras" />
+            <Button fx:id="buttonBack" mnemonicParsing="false" onAction="#goBack" styleClass="back-button" text="Atrás" />
          </children>
       </HBox>
    </children>

@@ -22,15 +22,16 @@
 .button {
     -fx-background-color: #4CAF50;
     -fx-text-fill: white;
-    -fx-font-size: 14px;
+    -fx-font-size: 16px;
     -fx-font-weight: bold;
     -fx-padding: 15px 25px;
     -fx-background-radius: 10px;
     -fx-effect: innershadow(gaussian, #000000, 5, 0.0, 1, 1);
     -fx-border-radius: 10px;
-    -fx-pref-width: 200px;
-    -fx-pref-height: 50px;
+    -fx-pref-width: 100px;
+    -fx-pref-height: 25px;
 }
+
 
 .button:hover {
     -fx-background-color: #45a049;
@@ -38,15 +39,18 @@
     -fx-effect: innershadow(gaussian, #000000, 10, 0.0, 1, 1);
 }
 
+.back-button {
+    -fx-background-color: #E57373;
+}
+
+.back-button:hover {
+    -fx-background-color: #D84343;
+}
+
 .errorMessage {
     -fx-font-size: 14px;
     -fx-text-fill: red;
     -fx-font-weight: normal;
-}
-
-.AnchorPane {
-    -fx-alignment: center;
-    -fx-padding: 40px 0;
 }
 
 .button:focused {

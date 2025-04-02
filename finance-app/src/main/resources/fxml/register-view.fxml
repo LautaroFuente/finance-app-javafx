@@ -17,7 +17,7 @@
             <TextField fx:id="nameField" />
          </children>
          <VBox.margin>
-            <Insets />
+            <Insets top="50.0" />
          </VBox.margin>
       </HBox>
       <Label fx:id="errorNameField" layoutX="286.0" layoutY="115.0" text="" />
@@ -28,7 +28,7 @@
          </children>
       </HBox>
       <Label fx:id="errorEmailField" layoutX="286.0" layoutY="192.0" text="" />
-      <HBox alignment="CENTER" spacing="50.0">
+      <HBox alignment="CENTER" prefHeight="70.0" prefWidth="638.0" spacing="50.0">
          <children>
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Contraseña" />
             <PasswordField fx:id="passwordField" />
@@ -37,7 +37,7 @@
       <Label fx:id="errorPasswordField" layoutX="286.0" layoutY="271.0" text="" />
       <Button fx:id="buttonSubmit" layoutX="274.0" layoutY="315.0" mnemonicParsing="false" onAction="#onSubmit" text="Enviar" />
       <Label fx:id="responseMessage" layoutX="286.0" layoutY="352.0" text="" />
-      <Button fx:id="buttonBack" layoutX="504.0" layoutY="348.0" mnemonicParsing="false" onAction="#loadNewView" text="Atras">
+      <Button fx:id="buttonBack" layoutX="504.0" layoutY="348.0" mnemonicParsing="false" onAction="#loadNewView" styleClass="back-button" text="Atras">
          <VBox.margin>
             <Insets bottom="25.0" />
          </VBox.margin></Button>

@@ -1,9 +1,6 @@
 package com.finance_app.finance_app.controller;
 
-import java.io.IOException;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,15 +11,12 @@ import com.finance_app.finance_app.validation.Validator;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 @Controller
 public class RegisterController {
@@ -35,9 +29,6 @@ public class RegisterController {
 	
 	@Autowired
 	private WalletService walletService;
-
-	@Autowired
-	private ApplicationContext context;
 	
 	@FXML
     private TextField nameField;  
@@ -104,8 +95,9 @@ public class RegisterController {
                 this.walletService.addWallet(this.userService.getOneUser(this.emailField.getText()));
             } catch (Exception e) {
                 // Si ocurre un error al crear la billetera, deshacer la transacción de usuario
+            	Alert alert = new Alert(Alert.AlertType.ERROR, "Error al relacionar la billetera al usuario, por favor intente nuevamente.", ButtonType.OK);
+    		    alert.showAndWait();
                 throw new RuntimeException("Error al crear la billetera para el usuario", e);
-                // TODO: controlar error para no dejar colgada la excepcion ni cerrar la app
             }
 			
 			this.loadNewViewService.loadNewView(event, "/fxml/home-view.fxml");

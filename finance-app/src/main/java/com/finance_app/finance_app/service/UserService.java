@@ -13,9 +13,13 @@ import com.finance_app.finance_app.repository.UserRepository;
 public class UserService {
 
 	@Autowired
-	private UserRepository userRepository;
-	
-	private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+	private UserRepository userRepository;	
+	private final BCryptPasswordEncoder passwordEncoder;
+
+    @Autowired
+    public UserService(BCryptPasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
+    }
 	
 	public String addUser(String name, String email, String password) {
 		User user = new User();

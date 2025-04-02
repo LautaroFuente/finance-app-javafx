@@ -18,10 +18,6 @@ public class Validator {
     public static boolean validatePassword(String password) {
         return password != null && password.length() >= 6;
     }
-
-    public static boolean validateFields(String username, String email, String password) {
-        return validateUsername(username) && validateEmail(email) && validatePassword(password);
-    }
     
     public static boolean validateNumericText(String text) {
         try {

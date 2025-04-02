@@ -13,8 +13,8 @@
    <children>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
          <children>
-            <Label text="Nombre" />
-            <TextField fx:id="nameField" alignment="CENTER" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Nombre" />
+            <TextField fx:id="nameField" />
          </children>
          <VBox.margin>
             <Insets />
@@ -23,20 +23,23 @@
       <Label fx:id="errorNameField" layoutX="286.0" layoutY="115.0" text="" />
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
          <children>
-            <Label text="Email" />
-            <TextField fx:id="emailField" alignment="CENTER" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Email" />
+            <TextField fx:id="emailField" />
          </children>
       </HBox>
       <Label fx:id="errorEmailField" layoutX="286.0" layoutY="192.0" text="" />
       <HBox alignment="CENTER" spacing="50.0">
          <children>
-            <Label text="Contraseña" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Contraseña" />
             <PasswordField fx:id="passwordField" />
          </children>
       </HBox>
       <Label fx:id="errorPasswordField" layoutX="286.0" layoutY="271.0" text="" />
       <Button fx:id="buttonSubmit" layoutX="274.0" layoutY="315.0" mnemonicParsing="false" onAction="#onSubmit" text="Enviar" />
       <Label fx:id="responseMessage" layoutX="286.0" layoutY="352.0" text="" />
-      <Button fx:id="buttonBack" layoutX="504.0" layoutY="348.0" mnemonicParsing="false" onAction="#goBack" text="Atras" />
+      <Button fx:id="buttonBack" layoutX="504.0" layoutY="348.0" mnemonicParsing="false" onAction="#loadNewView" text="Atras">
+         <VBox.margin>
+            <Insets bottom="25.0" />
+         </VBox.margin></Button>
    </children>
 </VBox>

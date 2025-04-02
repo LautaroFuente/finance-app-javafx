@@ -71,27 +71,32 @@ public class RegisterController {
 	public void onSubmit(ActionEvent event) {
 		
 		cleanErrorFields();
-		if(!Validator.validateFields(this.nameField.getText(), this.emailField.getText(), this.passwordField.getText())) {
-		
-			if(!Validator.validateUsername(this.nameField.getText())) {
-				this.errorNameField.setText("El nombre no es válido");
-			}
-		
-			if(!Validator.validateEmail(this.emailField.getText())) {
-				this.errorEmailField.setText("El email no es válido");
-			}
-		
-			if(!Validator.validatePassword(this.passwordField.getText())) {
-				this.errorPasswordField.setText("La contraseña no es válida");
-			}
-		
-			cleanFields();
-			return;
+		boolean hasErrors = false;
+
+		if (!Validator.validateUsername(this.nameField.getText())) {
+		    this.errorNameField.setText("El nombre no es válido, no puede estar vacío");
+		    hasErrors = true;
+		}
+
+		if (!Validator.validateEmail(this.emailField.getText())) {
+		    this.errorEmailField.setText("El email no es válido");
+		    hasErrors = true;
+		}
+
+		if (!Validator.validatePassword(this.passwordField.getText())) {
+		    this.errorPasswordField.setText("La contraseña no debe ser vacía y debe tener mas de 6 caracteres");
+		    hasErrors = true;
+		}
+
+		if (hasErrors) {
+		    return;  // No seguir ejecutando si hay errores
 		}
 		
-		String responseRegister = this.userService.addUser(this.nameField.getText(), this.emailField.getText(), this.passwordField.getText());
+		cleanFields();
 		
-		if("Usuario registrado exitosamente".equals(responseRegister)) {
+		String responseRegisterUser = this.userService.addUser(this.nameField.getText(), this.emailField.getText(), this.passwordField.getText());
+		
+		if("Usuario registrado exitosamente".equals(responseRegisterUser)) {
 			this.responseMessage.setText("Usuario registrado exitosamente");
 			
 			// Crear billetera y asociarla al nuevo usuario
@@ -100,30 +105,10 @@ public class RegisterController {
             } catch (Exception e) {
                 // Si ocurre un error al crear la billetera, deshacer la transacción de usuario
                 throw new RuntimeException("Error al crear la billetera para el usuario", e);
+                // TODO: controlar error para no dejar colgada la excepcion ni cerrar la app
             }
 			
-			try {
-				FXMLLoader loader = new FXMLLoader();
-	            loader.setLocation(getClass().getResource("/fxml/home-view.fxml"));
-	            loader.setControllerFactory(context::getBean);
-
-	            Parent root = loader.load();
-
-	            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();  // Usamos `event.getSource()` para obtener el origen del evento (el botón)
-	            
-	            double currentWidth = stage.getWidth();
-	            double currentHeight = stage.getHeight();
-
-	            // Crear la nueva escena y mostrarla
-	            Scene scene = new Scene(root, currentWidth, currentHeight);
-	            stage.setWidth(currentWidth); 
-	            stage.setHeight(currentHeight);
-	            stage.setScene(scene);
-	            stage.show();
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        }
-			
+			this.loadNewViewService.loadNewView(event, "/fxml/home-view.fxml");
 
 		}else {
 			this.responseMessage.setText("Error con el servidor al agregar usuario");

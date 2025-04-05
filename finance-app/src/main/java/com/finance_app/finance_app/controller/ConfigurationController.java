@@ -13,7 +13,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -22,13 +22,13 @@ import javafx.scene.Scene;
 public class ConfigurationController {
 
 	@Autowired
-	private LoadNewViewService goBackService;
+	private LoadNewViewService loadNewViewService;
 	
 	@Autowired
 	private UserService userService;
 	
 	@FXML
-	private AnchorPane root;
+	private VBox root;
 	
 	@FXML
 	private Button buttonBack;
@@ -86,10 +86,6 @@ public class ConfigurationController {
 		}
 	}
 	
-	public void goBack(ActionEvent event) {
-		this.goBackService.loadNewView(event, "/fxml/wallet-view.fxml");
-	}
-	
 	public void applyChanges(ActionEvent event) {
 		// Verificamos cuál RadioButton está seleccionado
         RadioButton selectedRadioButton = (RadioButton) this.toggleGroup.getSelectedToggle();
@@ -130,6 +126,10 @@ public class ConfigurationController {
 		User userToDelete = SessionManager.getInstance().getUser();
 		SessionManager.getInstance().logout();
 		this.userService.deleteUser(userToDelete);
-		this.goBackService.loadNewView(event, "/fxml/home-view.fxml");
+		this.loadNewViewService.loadNewView(event, "/fxml/home-view.fxml");
+	}
+	
+	public void goBack(ActionEvent event) {
+		this.loadNewViewService.loadNewView(event, "/fxml/wallet-view.fxml");
 	}
 }

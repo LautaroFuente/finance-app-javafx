@@ -3,24 +3,27 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.finance_app.finance_app.controller.ConfigurationController" stylesheets="@/css/configuration.css">
+<VBox alignment="CENTER" prefHeight="411.0" prefWidth="638.0" spacing="30" stylesheets="@/css/configuration.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.finance_app.finance_app.controller.ConfigurationController">
    
    <children>
-      <VBox layoutX="250.0" layoutY="76.0" prefHeight="110.0" prefWidth="100.0">
+      <Label fx:id="resolutionTittle" layoutX="286.0" layoutY="29.0" prefHeight="31.0" prefWidth="114.0" text="Selecciona resolucion" />
+      <VBox alignment="CENTER" layoutX="250.0" layoutY="76.0" prefHeight="196.0" prefWidth="638.0" spacing="30.0">
          <children>
-            <RadioButton fx:id="buttonRadio1" mnemonicParsing="false" text="Resolución 800x600" />
-            <RadioButton fx:id="buttonRadio2" mnemonicParsing="false" text="Resolución 1024x768" />
-            <RadioButton fx:id="buttonRadio3" mnemonicParsing="false" text="Resolución 1280x1024" />
-            <RadioButton fx:id="buttonRadio4" mnemonicParsing="false" text="Resolución 1920x1080" />
+            <RadioButton fx:id="buttonRadio1" mnemonicParsing="false" prefHeight="17.0" prefWidth="149.0" text="Resolución 800x600" />
+            <RadioButton fx:id="buttonRadio2" mnemonicParsing="false" prefHeight="17.0" prefWidth="149.0" text="Resolución 1024x768" />
+            <RadioButton fx:id="buttonRadio3" mnemonicParsing="false" prefHeight="17.0" prefWidth="149.0" text="Resolución 1280x1024" />
+            <RadioButton fx:id="buttonRadio4" mnemonicParsing="false" prefHeight="17.0" prefWidth="149.0" text="Resolución 1920x1080" />
          </children>
       </VBox>
-      <Label fx:id="resolutionTittle" layoutX="286.0" layoutY="29.0" text="Selecciona resolucion" />
-      <Button fx:id="buttonBack" layoutX="516.0" layoutY="350.0" mnemonicParsing="false" onAction="#goBack" text="Atras" />
-      <Button fx:id="buttonApply" layoutX="37.0" layoutY="350.0" mnemonicParsing="false" onAction="#applyChanges" text="Aplicar" />
-      <Button fx:id="deleteAccount" layoutX="250.0" layoutY="350.0" mnemonicParsing="false" onAction="#deleteAccountConfirm" text="Eliminar Cuenta" />
+      <HBox alignment="CENTER" prefHeight="79.0" prefWidth="638.0" spacing="80.0">
+         <children>
+            <Button fx:id="buttonApply" mnemonicParsing="false" onAction="#applyChanges" text="Aplicar" />
+            <Button fx:id="deleteAccount" mnemonicParsing="false" onAction="#deleteAccountConfirm" text="Eliminar Cuenta" />
+            <Button fx:id="buttonBack" mnemonicParsing="false" onAction="#goBack" text="Atras" />
+         </children>
+      </HBox>
    </children>
-</AnchorPane>
+</VBox>

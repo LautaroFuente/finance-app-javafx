@@ -14,12 +14,9 @@ public class UserService {
 
 	@Autowired
 	private UserRepository userRepository;	
-	private final BCryptPasswordEncoder passwordEncoder;
-
-    @Autowired
-    public UserService(BCryptPasswordEncoder passwordEncoder) {
-        this.passwordEncoder = passwordEncoder;
-    }
+	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 	
 	public String addUser(String name, String email, String password) {
 		User user = new User();

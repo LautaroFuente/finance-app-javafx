@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import com.finance_app.finance_app.entities.User;
 
-
 @Service
 public class AuthService {
 	

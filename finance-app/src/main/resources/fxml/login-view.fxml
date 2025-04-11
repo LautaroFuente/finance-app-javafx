@@ -13,7 +13,7 @@
    <children>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
          <children>
-            <Label text="Email" />
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="60.0" text="Email" />
             <TextField fx:id="emailField" />
          </children>
          <VBox.margin>
@@ -23,7 +23,7 @@
       <Label fx:id="errorEmailField" layoutX="286.0" layoutY="153.0" text="" />
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
          <children>
-            <Label text="Contraseña" />
+            <Label alignment="CENTER" contentDisplay="CENTER" text="Contraseña" />
             <PasswordField fx:id="passwordField" />
          </children>
       </HBox>

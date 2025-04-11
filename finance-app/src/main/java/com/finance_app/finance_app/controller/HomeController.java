@@ -2,9 +2,7 @@ package com.finance_app.finance_app.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
 import com.finance_app.finance_app.service.LoadNewViewService;
-
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

@@ -52,11 +52,6 @@
     -fx-background-color: #D84343;
 }
 
-.button:focused {
-    -fx-background-color: #388E3C;
-    -fx-border-color: transparent;
-}
-
 .bottom-box {
     -fx-padding: 40px 50px 50px 0;
 }

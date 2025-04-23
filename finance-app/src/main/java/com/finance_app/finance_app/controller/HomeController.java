@@ -25,7 +25,7 @@ public class HomeController {
 	
 	@FXML
 	private Button buttonExit;
-
+	
     @FXML
     public void onClickRegister(ActionEvent event) {
         this.loadNewViewService.loadNewView(event, "/fxml/register-view.fxml");

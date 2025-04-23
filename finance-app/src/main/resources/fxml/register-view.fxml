@@ -37,7 +37,7 @@
       <Label fx:id="errorPasswordField" layoutX="286.0" layoutY="271.0" text="a" />
       <Button fx:id="buttonSubmit" layoutX="274.0" layoutY="315.0" mnemonicParsing="false" onAction="#onSubmit" text="Enviar" />
       <Label fx:id="responseMessage" layoutX="286.0" layoutY="352.0" text="a" />
-      <Button fx:id="buttonBack" layoutX="504.0" layoutY="348.0" mnemonicParsing="false" onAction="#loadNewView" styleClass="back-button" text="Atras">
+      <Button fx:id="buttonBack" layoutX="504.0" layoutY="348.0" mnemonicParsing="false" styleClass="back-button" onAction="#goBack" text="Atras">
          <VBox.margin>
             <Insets bottom="25.0" />
          </VBox.margin></Button>

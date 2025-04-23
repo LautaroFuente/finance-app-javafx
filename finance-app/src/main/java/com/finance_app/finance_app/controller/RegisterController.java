@@ -1,16 +1,14 @@
 package com.finance_app.finance_app.controller;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.finance_app.finance_app.service.LoadNewViewService;
 import com.finance_app.finance_app.service.UserService;
 import com.finance_app.finance_app.service.WalletService;
 import com.finance_app.finance_app.validation.Validator;
 
-import jakarta.annotation.PostConstruct;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -59,12 +57,24 @@ public class RegisterController {
     @FXML
     private Button buttonBack;
     
-	@FXML
-	@Transactional
+    @FXML
+	public void initialize() {
+		if(this.buttonBack == null) {
+			System.out.println("buttonBack es null");
+		}else {
+			System.out.println("buttonBack no es");
+		}
+		if(this.errorNameField == null) {
+			System.out.println("errorNameField es null");
+		}else {
+			System.out.println("errorNameField no es");
+		}
+	}
+    
+    @FXML
 	public void onSubmit(ActionEvent event) {
 		System.out.println("ok");
 		
-		/*
 		cleanErrorFields();
 		boolean hasErrors = false;
 
@@ -109,7 +119,7 @@ public class RegisterController {
 		}else {
 			this.responseMessage.setText("Error con el servidor al agregar usuario");
 		}
-		*/
+
 	}
 	
 	private void cleanFields() {
@@ -124,15 +134,8 @@ public class RegisterController {
 		this.errorPasswordField.setText("");
 	}
 	
-	public void loadNewView(ActionEvent event) {
-		if(this.buttonBack  == null) {
-			System.out.println("boton atras null");
-		}else {
-			System.out.println("boton atras no es null");
-		}
-		if(this.nameField  == null) {
-			System.out.println("boton atras null");
-		}
+	@FXML
+	public void goBack(ActionEvent event) {
 		this.loadNewViewService.loadNewView(event, "/fxml/home-view.fxml");
 	}
 }

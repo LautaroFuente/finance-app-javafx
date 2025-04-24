@@ -20,6 +20,10 @@ public class WalletService {
 		Wallet wallet = new Wallet(user, new BigDecimal(0.00));
 		
 		try {
+			if (walletRepository.getOneWallet(user.getId()) != null) {
+			    return "Ya existe una billetera para este usuario";
+			}
+			
 			Wallet walletSaved = this.walletRepository.save(wallet);
 			
 			if(walletSaved != null) {

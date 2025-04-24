@@ -1,6 +1,5 @@
 package com.finance_app.finance_app.entities;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,7 +13,7 @@ public class User {
 	private Long id;
 	
 	private String name;
-	private String email;
+	private String email;	
 	private String password;
 	
 	public User(String name, String email, String password) {

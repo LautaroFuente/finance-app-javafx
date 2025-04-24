@@ -26,6 +26,10 @@ public class UserService {
 		user.setPassword(hashedPassword);
 		
 		try {
+			if (userRepository.findByEmail(email).isPresent()) {
+			    return "El email ya está registrado";
+			}
+
 			User userSaved = this.userRepository.save(user);
 			
 			if(userSaved != null) {

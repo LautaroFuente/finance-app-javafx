@@ -1,6 +1,7 @@
 package com.finance_app.finance_app.controller;
 
 
+import org.hibernate.internal.build.AllowSysOut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -9,6 +10,8 @@ import com.finance_app.finance_app.service.UserService;
 import com.finance_app.finance_app.service.WalletService;
 import com.finance_app.finance_app.validation.Validator;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -17,6 +20,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.util.Duration;
 
 @Controller
 public class RegisterController {
@@ -58,22 +62,7 @@ public class RegisterController {
     private Button buttonBack;
     
     @FXML
-	public void initialize() {
-		if(this.buttonBack == null) {
-			System.out.println("buttonBack es null");
-		}else {
-			System.out.println("buttonBack no es");
-		}
-		if(this.errorNameField == null) {
-			System.out.println("errorNameField es null");
-		}else {
-			System.out.println("errorNameField no es");
-		}
-	}
-    
-    @FXML
 	public void onSubmit(ActionEvent event) {
-		System.out.println("ok");
 		
 		cleanErrorFields();
 		boolean hasErrors = false;
@@ -96,13 +85,10 @@ public class RegisterController {
 		if (hasErrors) {
 		    return;  // No seguir ejecutando si hay errores
 		}
-
-		cleanFields();
 		
 		String responseRegisterUser = this.userService.addUser(this.nameField.getText(), this.emailField.getText(), this.passwordField.getText());
-		
+
 		if("Usuario registrado exitosamente".equals(responseRegisterUser)) {
-			this.responseMessage.setText("Usuario registrado exitosamente");
 			
 			// Crear billetera y asociarla al nuevo usuario
 			try {
@@ -113,11 +99,20 @@ public class RegisterController {
     		    alert.showAndWait();
                 throw new RuntimeException("Error al crear la billetera para el usuario", e);
             }
-			
-			this.loadNewViewService.loadNewView(event, "/fxml/home-view.fxml");
+			this.responseMessage.getStyleClass().removeAll("errorMessage");
+			if (!responseMessage.getStyleClass().contains("infoMessage")) {
+			    responseMessage.getStyleClass().add("infoMessage");
+			}
+			cleanFields();
+			this.responseMessage.setText("Usuario registrado exitosamente");
+
+			PauseTransition pause = new PauseTransition(Duration.seconds(2.5));
+			pause.setOnFinished(e -> this.loadNewViewService.loadNewView(event, "/fxml/home-view.fxml"));
+			pause.play();
 
 		}else {
-			this.responseMessage.setText("Error con el servidor al agregar usuario");
+			cleanFields();
+			this.responseMessage.setText(responseRegisterUser);
 		}
 
 	}
@@ -132,6 +127,7 @@ public class RegisterController {
 		this.errorNameField.setText("");
 		this.errorEmailField.setText("");
 		this.errorPasswordField.setText("");
+		this.responseMessage.setText("");
 	}
 	
 	@FXML

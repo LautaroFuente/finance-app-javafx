@@ -48,9 +48,15 @@
 }
 
 .errorMessage {
-    -fx-font-size: 14px;
+    -fx-font-size: 13px;
     -fx-text-fill: red;
     -fx-font-weight: normal;
+}
+
+.infoMessage {
+	-fx-font-size: 13px;
+    -fx-font-weight: normal;
+    -fx-text-fill: green;
 }
 
 

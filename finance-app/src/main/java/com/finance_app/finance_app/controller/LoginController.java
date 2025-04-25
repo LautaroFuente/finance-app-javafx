@@ -99,6 +99,7 @@ public class LoginController {
 		this.errorPasswordField.setText("");
 	}
 	
+	@FXML
 	public void goBack(ActionEvent event) {
 		this.loadNewViewService.loadNewView(event, "/fxml/home-view.fxml");
 	}

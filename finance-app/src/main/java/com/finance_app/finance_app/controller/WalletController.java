@@ -123,8 +123,8 @@ public class WalletController {
 	
 	private void initNotifications() {
 		// Vincular el texto del Label al contador de notificaciones
-        notificationCountLabel.textProperty().bind(Bindings.format("%d", notificationCount));
-
+        //notificationCountLabel.textProperty().bind(Bindings.format("%d", notificationCount));
+		this.notificationCountLabel.setText("1");
         // Establecer estilo inicial para la campana de notificación
         bellIcon.setStyle("-fx-background-color: transparent;");
         // Establecer imagen inicial
@@ -229,19 +229,23 @@ public class WalletController {
 		transactionList.setItems(FXCollections.observableArrayList(this.transactionListDataService.getTransactionsForListWallet(0, 7)));
 	}
 	
+	@FXML
 	public void closeMySession(ActionEvent event) {
 		SessionManager.getInstance().logout();
 		this.goBackService.loadNewView(event, "/fxml/home-view.fxml");
 	}
 	
+	@FXML
 	public void goToNotifications(ActionEvent event) {
 		this.goBackService.loadNewView(event, "/fxml/notification-view.fxml");
 	}
 	
+	@FXML
 	public void goToAsignationLimit(ActionEvent event) {
 		this.goBackService.loadNewView(event, "/fxml/asignation-limit-view.fxml");
 	}
 	
+	@FXML
 	public void goToAddTransaction(ActionEvent event) {
 		this.goBackService.loadNewView(event, "/fxml/add-transaction-view.fxml");
 	}

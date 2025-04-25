@@ -3,6 +3,8 @@ package com.finance_app.finance_app.service;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,8 +27,12 @@ public class ChartDataService {
 	public List<CategoryPercentageDTO> getPercentageForCategory(){
 		// Calcular inicio y fin del mes actual
 		LocalDate now = LocalDate.now();
-        LocalDate startOfMonth = now.withDayOfMonth(1);
-        LocalDate endOfMonth = now.withDayOfMonth(now.lengthOfMonth());
+		LocalDate startOfMonth = now.withDayOfMonth(1);
+		LocalDate endOfMonth = now.withDayOfMonth(now.lengthOfMonth());
+
+		LocalDateTime startDateTime = startOfMonth.atStartOfDay();
+		LocalDateTime endDateTime = endOfMonth.atTime(LocalTime.MAX);
+
         try {
         	// Obtener el usuario con la sesion activa
         	User user = SessionManager.getInstance().getUser();
@@ -34,7 +40,7 @@ public class ChartDataService {
         	// Si existe obtener los porcentajes
         	if(user != null) {
         		// Obtener los gastado por cada categoria
-        		List<Object[]> list = this.transactionService.getPercentageByCategoryForUser(user.getId(), startOfMonth, endOfMonth);
+        		List<Object[]> list = this.transactionService.getPercentageByCategoryForUser(user.getId(), startDateTime, endDateTime);
         		
         		BigDecimal total = BigDecimal.ZERO;
         		// Obtener el total gastado

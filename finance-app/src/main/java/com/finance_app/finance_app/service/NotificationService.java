@@ -29,6 +29,6 @@ public class NotificationService {
 	}
 	
 	public Integer getNumberOfNotificationFromUser(Long userId) {
-		return this.getNumberOfNotificationFromUser(userId);
+		return this.notificationRepository.getNumberOfNotificationFromUser(userId);
 	}
 }

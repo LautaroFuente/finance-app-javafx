@@ -1,7 +1,6 @@
 package com.finance_app.finance_app.controller;
 
 
-import org.hibernate.internal.build.AllowSysOut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -10,7 +9,6 @@ import com.finance_app.finance_app.service.UserService;
 import com.finance_app.finance_app.service.WalletService;
 import com.finance_app.finance_app.validation.Validator;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -111,7 +109,6 @@ public class RegisterController {
 			pause.play();
 
 		}else {
-			cleanFields();
 			this.responseMessage.setText(responseRegisterUser);
 		}
 

@@ -58,24 +58,26 @@ public class LoginController {
     	cleanErrorFields();
 		if(!Validator.validateEmail(this.emailField.getText())) {
 			this.errorEmailField.setText("El email no tiene un formato correcto");
-			cleanFields();
 			return;
 		}
 		
-		cleanFields();
 		String responseLogin = this.authService.authUser(this.emailField.getText(), this.passwordField.getText());
 		
 		if("Usuario logueado".equals(responseLogin)) {
+			this.responseMessage.getStyleClass().removeAll("errorMessage");
+			if (!responseMessage.getStyleClass().contains("infoMessage")) {
+			    responseMessage.getStyleClass().add("infoMessage");
+			}
 			this.responseMessage.setText(responseLogin);
 			
 			try {
 				// Crear la instancia del nuevo usuario que se loguea
 				User user = this.userService.getOneUser(this.emailField.getText());
 				SessionManager.getInstance().login(user);
-				
+				cleanFields();
 				// Cargar la vista
 				this.loadNewViewService.loadNewView(event, "/fxml/wallet-view.fxml");
-	        } catch (Exception e) {
+				} catch (Exception e) {
 	        	Alert alert = new Alert(Alert.AlertType.ERROR, "Error al iniciar sesion del usuario, por intente nuevamente.", ButtonType.OK);
 	        	alert.showAndWait();
 	            e.printStackTrace();

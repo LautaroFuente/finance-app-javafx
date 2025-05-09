@@ -67,9 +67,6 @@ public class WalletController {
 	private Button closeSession;
 	
 	@FXML
-	private Button buttonNotifications;
-	
-	@FXML
 	private Button allTransactions;
 	
 	@FXML
@@ -91,6 +88,9 @@ public class WalletController {
 	private Label notificationCountLabel;
 	
 	@FXML
+	private Label titleLabel;
+	
+	@FXML
 	private TableView<TransactionForListDTO> transactionList;
 	
 	@FXML
@@ -105,9 +105,11 @@ public class WalletController {
 	@FXML
 	private TableColumn<TransactionForListDTO, String> transactionDate;
 	
-	private IntegerProperty notificationCount = new SimpleIntegerProperty(0);  // Propiedad reactiva para las notificaciones
+	private IntegerProperty notificationCount = new SimpleIntegerProperty(1);  // Propiedad reactiva para las notificaciones
 	
 	public void initialize() {
+		this.initTitle();
+		
 		// Configurar grafico dona
 		this.initChart();
 		
@@ -121,18 +123,18 @@ public class WalletController {
 		this.initNotifications();
 	}
 	
+	private void initTitle() {
+		String username = SessionManager.getInstance().getUser().getName();
+		this.titleLabel.setText("Hola " + username + "!" );
+	}
+	
 	private void initNotifications() {
 		// Vincular el texto del Label al contador de notificaciones
-        //notificationCountLabel.textProperty().bind(Bindings.format("%d", notificationCount));
-		this.notificationCountLabel.setText("1");
-        // Establecer estilo inicial para la campana de notificación
-        bellIcon.setStyle("-fx-background-color: transparent;");
+        notificationCountLabel.textProperty().bind(Bindings.format("%d", notificationCount));
         // Establecer imagen inicial
         updateBellIcon();
-
-        // Oobtener el número de notificaciones
+        // Obtener el número de notificaciones
         updateNotificationCountFromService();
-
 	}
 	
     private void updateNotificationCountFromService() {
@@ -141,28 +143,16 @@ public class WalletController {
 
         // Actualizar la propiedad con el nuevo valor
         notificationCount.set(newNotificationCount);
-
-        // Si el número de notificaciones es mayor que 0, mostramos el contador
-        if (newNotificationCount > 0) {
-            notificationCountLabel.setVisible(true); 
-        } else {
-            notificationCountLabel.setVisible(false); 
-        }
-
-        // Actualizar la imagen de la campana en funcion de las notificaciones
-        updateBellIcon();
     }
 
-    // Actualiza la imagen de la campana dependiendo de las notificaciones
+    // Actualiza la imagen de la campana
     private void updateBellIcon() {
-        if (notificationCount.get() > 0) {
-        	Image image = new Image(getClass().getResourceAsStream("/images/bell_with_notifications.png"));
-            bellIcon.setImage(image);
-        } else {
-        	Image image = new Image(getClass().getResourceAsStream("/images/bell_without_notifications.png"));
-            bellIcon.setImage(image);
+        Image image = new Image(getClass().getResourceAsStream("/images/bell_notifications.png"));
+        bellIcon.setImage(image);
+     // Establecer estilo inicial para la campana de notificación
+        bellIcon.setStyle("-fx-background-color: transparent;");
             
-        }
+
     }
 	
 	private void initTotalWallet() {
@@ -188,7 +178,7 @@ public class WalletController {
         String formattedTotal = currencyFormat.format(total);
         
         // Asignar al label
-        this.totalWallet.setText(formattedTotal);
+        this.totalWallet.setText("Saldo: " + formattedTotal);
 	}
 	
 	private void initChart() {
@@ -200,12 +190,11 @@ public class WalletController {
 			// Asignar las porciones al PieChart
 			chart.getData().add(slice);
 		}
-
+		PieChart.Data sliceMock = new PieChart.Data("cat1", 100);
 		// Configurar propiedades adicionales del gráfico
 		chart.setLabelsVisible(true);
 
-		// Cambiar el tamaño del hueco (Circle) si es necesario
-		hole.setRadius(60);
+		chart.getData().add(sliceMock);
 	}
 	
 	private void initList() {
@@ -223,6 +212,13 @@ public class WalletController {
 		        return new SimpleStringProperty("");  // Si la fecha es nula, mostramos una cadena vacía
 		    }
 		});
+		// Hacer la tabla no editable por el usuario
+		transactionList.setEditable(false);
+		transactionList.setColumnResizePolicy(TableView.UNCONSTRAINED_RESIZE_POLICY); // Para controlar resizing
+		for (TableColumn<?, ?> column : transactionList.getColumns()) {
+		    column.setReorderable(false);
+		    column.setResizable(false);
+		}
 
 		
 		// Cargar datos en la lista

@@ -34,6 +34,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
+import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -185,16 +186,24 @@ public class WalletController {
 		// Crear las porciones del gráfico de dona
 		List<CategoryPercentageDTO> percentages = this.chartDataService.getPercentageForCategory();
 		
-		for(CategoryPercentageDTO percentage : percentages) {
-			PieChart.Data slice = new PieChart.Data(percentage.getName(), percentage.getPercentage());
-			// Asignar las porciones al PieChart
-			chart.getData().add(slice);
-		}
-		PieChart.Data sliceMock = new PieChart.Data("cat1", 100);
-		// Configurar propiedades adicionales del gráfico
-		chart.setLabelsVisible(true);
+		// Verificar si la lista está vacía o todos los porcentajes son cero
+		boolean hasValidData = percentages.stream()
+		    .anyMatch(p -> p.getPercentage() > 0);
 
-		chart.getData().add(sliceMock);
+		if (!hasValidData) {
+			PieChart.Data slice = new PieChart.Data("Sin gastos", 1);
+			chart.getData().add(slice);
+
+			// Asegura que el nodo ya esté creado antes de modificar su estilo
+			Platform.runLater(() -> {
+			    slice.getNode().setStyle("-fx-pie-color: gray;");
+			});
+
+		} else {
+		    for (CategoryPercentageDTO percentage : percentages) {
+		        chart.getData().add(new PieChart.Data(percentage.getName(), percentage.getPercentage()));
+		    }
+		}
 	}
 	
 	private void initList() {
@@ -215,11 +224,6 @@ public class WalletController {
 		// Hacer la tabla no editable por el usuario
 		transactionList.setEditable(false);
 		transactionList.setColumnResizePolicy(TableView.UNCONSTRAINED_RESIZE_POLICY); // Para controlar resizing
-		for (TableColumn<?, ?> column : transactionList.getColumns()) {
-		    column.setReorderable(false);
-		    column.setResizable(false);
-		}
-
 		
 		// Cargar datos en la lista
 		transactionList.setItems(FXCollections.observableArrayList(this.transactionListDataService.getTransactionsForListWallet(0, 7)));
@@ -244,5 +248,10 @@ public class WalletController {
 	@FXML
 	public void goToAddTransaction(ActionEvent event) {
 		this.goBackService.loadNewView(event, "/fxml/add-transaction-view.fxml");
+	}
+	
+	@FXML
+	public void goToConfiguration(ActionEvent event) {
+		this.goBackService.loadNewView(event, "/fxml/configuration-view.fxml");
 	}
 }

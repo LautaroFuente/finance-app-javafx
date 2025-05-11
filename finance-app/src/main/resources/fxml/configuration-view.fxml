@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" prefHeight="411.0" prefWidth="638.0" spacing="30" stylesheets="@/css/configuration.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.finance_app.finance_app.controller.ConfigurationController">
+<VBox fx:id="root" alignment="CENTER" prefHeight="411.0" prefWidth="638.0" spacing="30" stylesheets="@/css/configuration.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.finance_app.finance_app.controller.ConfigurationController">
    
    <children>
       <Label fx:id="resolutionTittle" layoutX="286.0" layoutY="29.0" prefHeight="31.0" prefWidth="114.0" text="Selecciona resolucion" />

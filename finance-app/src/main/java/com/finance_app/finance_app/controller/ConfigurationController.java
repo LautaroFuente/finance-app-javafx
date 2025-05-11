@@ -56,7 +56,7 @@ public class ConfigurationController {
 	
 	public void initialize() {
         // Crear el ToggleGroup
-        ToggleGroup toggleGroup = new ToggleGroup();
+        this.toggleGroup = new ToggleGroup();
 
         // Asignar el ToggleGroup a cada RadioButton
         buttonRadio1.setToggleGroup(toggleGroup);
@@ -65,9 +65,12 @@ public class ConfigurationController {
         buttonRadio4.setToggleGroup(toggleGroup);
         
         //Marcar el RadioButton correspondiente a la resolucion actual
-        Scene scene = root.getScene();
-        Stage stage =(Stage) scene.getWindow();
-        checkRadioButton(stage.getWidth());
+        // Esperar a que la escena esté lista
+        javafx.application.Platform.runLater(() -> {
+            Scene scene = root.getScene();
+            Stage stage = (Stage) scene.getWindow();
+            checkRadioButton(stage.getWidth());
+        });
     }
 	
 	//segun el ancho recibido marcar el RadioButton correspondiente
@@ -77,12 +80,16 @@ public class ConfigurationController {
 		switch(widthInt) {
 			case 800:
 				this.buttonRadio1.setSelected(true);
+				break;
 			case 1024:
 				this.buttonRadio2.setSelected(true);
+				break;
 			case 1280:
 				this.buttonRadio3.setSelected(true);
+				break;
 			case 1920:
 				this.buttonRadio4.setSelected(true);
+				break;
 		}
 	}
 	

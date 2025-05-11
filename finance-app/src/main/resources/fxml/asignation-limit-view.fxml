@@ -11,7 +11,7 @@
    
    <children>
       <Label fx:id="tittle" layoutX="205.0" layoutY="43.0" text="Asigna un monto limite a una categoria" />
-      <ComboBox fx:id="selectCategory" layoutX="225.0" layoutY="126.0" prefWidth="150.0" />
+      <ComboBox fx:id="selectedCategory" layoutX="225.0" layoutY="126.0" prefWidth="150.0" />
       <Label fx:id="selectCategoryTitle" layoutX="244.0" layoutY="100.0" text="Seleccionar categoria" />
       <Label fx:id="maxAmountTittle" layoutX="260.0" layoutY="192.0" text="Monto maximo" />
       <TextField fx:id="maxAmount" layoutX="226.0" layoutY="222.0" />

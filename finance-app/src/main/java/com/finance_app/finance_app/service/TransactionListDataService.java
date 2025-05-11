@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import com.finance_app.finance_app.DTO.TransactionForListDTO;
 import com.finance_app.finance_app.entities.User;
+import com.finance_app.finance_app.enums.TransactionType;
 import com.finance_app.finance_app.utils.SessionManager;
 
 @Service
@@ -48,7 +49,7 @@ public class TransactionListDataService {
         		
         		// Recorrer las transacciones y crear el objeto DTO para agregar a la lista resultado
         		for(Object[] data : list) {
-        			String type = (String) data[0];
+        			String type = ((TransactionType) data[0]).name();
         			BigDecimal amount = (BigDecimal) data[1];
         		    String nameCategory = (String) data[2];
         		    LocalDateTime date = (LocalDateTime) data[3];

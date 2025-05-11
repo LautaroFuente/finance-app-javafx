@@ -87,14 +87,16 @@ public class AddTransactionController {
 	public void onSubmit(ActionEvent event) {
 		
 		cleanErrorFields();
+		System.out.println("ok1");
 		if(!Validator.validateNumericText(this.amountField.getText())) {
-		
+			System.out.println("ok error num");
+			if(this.errorAmountField == null) {
+				System.out.println("es null");
+			}
 			this.errorAmountField.setText("El monto ingresado no es válido");
-		
-			cleanFields();
 			return;
 		}
-		
+		System.out.println("ok2");
 		// Obtener el usuario actual
 		User user = SessionManager.getInstance().getUser();
 		
@@ -114,7 +116,8 @@ public class AddTransactionController {
 		// Agregar la transaccion al usuario
 		String responseAdd = this.transactionService.addTransactionForUser(transactionForSave);
 		
-		if("Transaccion guardada exitosamente".equals(responseAdd)) {
+		cleanFields();
+		if("Transacción guardada exitosamente".equals(responseAdd)) {
 			this.responseMessage.setText("Transaccion guardada exitosamente");	
 
 		}else {

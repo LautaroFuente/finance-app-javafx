@@ -1,25 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" stylesheets="@/css/add-transaction.css" fx:controller="com.finance_app.finance_app.controller.AddTransactionController">
+<VBox alignment="CENTER" prefHeight="411.0" prefWidth="638.0" spacing="10.0" stylesheets="@/css/add-transaction.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.finance_app.finance_app.controller.AddTransactionController">
    
    <children>
-      <Label layoutX="220.0" layoutY="24.0" text="Agregar un ingreso o un gasto" />
-      <Label layoutX="244.0" layoutY="58.0" text="Seleccionar categoria" />
-      <ComboBox fx:id="selectedCategory" layoutX="226.0" layoutY="81.0" prefWidth="150.0" />
-      <Label layoutX="258.0" layoutY="123.0" text="Seleccionar tipo" />
-      <Label layoutX="259.0" layoutY="183.0" text="Ingresar monto" />
-      <Button fx:id="buttonSubmit" layoutX="51.0" layoutY="345.0" mnemonicParsing="false" onAction="#onSubmit" text="Agregar" />
-      <Button fx:id="buttonBack" layoutX="506.0" layoutY="345.0" mnemonicParsing="false" onAction="#goBack" text="Volver" />
-      <TextField fx:id="amountField" layoutX="226.0" layoutY="206.0" />
-      <ComboBox fx:id="selectedType" layoutX="225.0" layoutY="146.0" prefWidth="150.0" />
-      <Label fx:id="errorAmountField" layoutX="300.0" layoutY="243.0" />
-      <Label layoutX="235.0" layoutY="278.0" text="Agregar una descripcion" />
-      <TextField fx:id="descriptionField" layoutX="226.0" layoutY="307.0" />
+      <Label layoutX="220.0" layoutY="24.0" text="Agregar un ingreso o un gasto">
+         <VBox.margin>
+            <Insets top="20.0" />
+         </VBox.margin></Label>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <Label text="Seleccionar tipo">
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </Label>
+            <ComboBox fx:id="selectedType" prefWidth="250.0" />
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <Label text="Seleccionar categoria">
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </Label>
+            <ComboBox fx:id="selectedCategory" prefWidth="250.0" />
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <Label text="Ingresar monto">
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </Label>
+            <HBox alignment="CENTER">
+               <children>
+                  <TextField fx:id="amountField" alignment="CENTER" prefWidth="250.0" />
+               </children>
+            </HBox>
+            <Label fx:id="errorAmountField">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <Label text="Agregar una descripcion">
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </Label>
+            <HBox alignment="CENTER">
+               <children>
+                  <TextField fx:id="descriptionField" alignment="CENTER" prefWidth="250.0" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Label fx:id="responseMessage" alignment="CENTER" contentDisplay="CENTER">
+         <VBox.margin>
+            <Insets bottom="5.0" top="5.0" />
+         </VBox.margin>
+      </Label>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="57.0">
+         <children>
+            <Button fx:id="buttonSubmit" mnemonicParsing="false" onAction="#onSubmit" text="Agregar" />
+            <Button fx:id="buttonBack" mnemonicParsing="false" onAction="#goBack" text="Volver" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="20.0" />
+         </VBox.margin>
+      </HBox>
    </children>
-</AnchorPane>
+</VBox>

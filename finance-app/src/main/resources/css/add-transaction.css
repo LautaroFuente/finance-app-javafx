@@ -52,21 +52,16 @@ TextField:focused, ComboBox:focused {
     -fx-border-color: #4CAF50;
 }
 
-/* Etiquetas de error */
-#errorAmountField, #errorDescriptionField {
+.errorMessage {
+    -fx-font-size: 13px;
     -fx-text-fill: red;
-    -fx-font-size: 12px;
-    -fx-font-style: italic;
-    -fx-opacity: 0;
+    -fx-font-weight: normal;
 }
 
-#errorAmountField.visible, #errorDescriptionField.visible {
-    -fx-opacity: 1;
-}
-
-/* Estilos para el formulario */
-.AnchorPane {
-    -fx-padding: 20px;
+.infoMessage {
+	-fx-font-size: 13px;
+    -fx-font-weight: normal;
+    -fx-text-fill: green;
 }
 
 /* Espaciado entre los elementos */
@@ -84,11 +79,6 @@ ComboBox {
 
 ComboBox:hover {
     -fx-border-color: #4CAF50;
-}
-
-/* Fondo de la vista */
-AnchorPane {
-    -fx-background-color: #fafafa;
 }
 
 /* Botón "Volver" */

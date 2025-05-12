@@ -27,7 +27,7 @@ public class TransactionService {
 	private LimitCategoryService limitCategoryService;
 	
 	public List<Object[]> getPercentageByCategoryForUser(Long userId, LocalDateTime startOfMonth, LocalDateTime endOfMonth){
-		return this.transactionRepository.getPercentageByCategoryForUser(userId, startOfMonth, endOfMonth);
+		return this.transactionRepository.getPercentageByCategoryForUser(userId, startOfMonth, endOfMonth, TransactionType.GASTO);
 	}
 	
 	public Page<Object[]> getAllTransactionsWithNameCategory(Long userId, Pageable pageable){
@@ -47,7 +47,7 @@ public class TransactionService {
 	        		this.walletService.updateWalletTotalWithIncome(SessionManager.getInstance().getUser().getId(), transactionSaved.getAmount());
 	        	}
 	        	else if(transactionSaved.getType() == TransactionType.GASTO) {
-	        		this.walletService.updateWalletTotalWithIncome(SessionManager.getInstance().getUser().getId(), transactionSaved.getAmount());
+	        		this.walletService.updateWalletTotalWithExpense(SessionManager.getInstance().getUser().getId(), transactionSaved.getAmount());
 	        		
 	        		// Llamar a LimitCategoryService para que se actualice (si existe) el total gastado de un limite asignado a una categoria
 	        		this.limitCategoryService.updateTotalIfExistLimitVigent(transactionSaved);

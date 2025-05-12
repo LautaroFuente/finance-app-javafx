@@ -47,7 +47,7 @@
                   <TextField fx:id="amountField" alignment="CENTER" prefWidth="250.0" />
                </children>
             </HBox>
-            <Label fx:id="errorAmountField">
+            <Label fx:id="errorAmountField" styleClass="errorMessage">
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin>
@@ -68,7 +68,7 @@
             </HBox>
          </children>
       </VBox>
-      <Label fx:id="responseMessage" alignment="CENTER" contentDisplay="CENTER">
+      <Label fx:id="responseMessage" alignment="CENTER" contentDisplay="CENTER" styleClass="errorMessage">
          <VBox.margin>
             <Insets bottom="5.0" top="5.0" />
          </VBox.margin>

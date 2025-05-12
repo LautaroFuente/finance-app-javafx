@@ -111,7 +111,7 @@ public class WalletController {
 	public void initialize() {
 		this.initTitle();
 		
-		// Configurar grafico dona
+		// Configurar grafico
 		this.initChart();
 		
 		// Configurar lista transacciones

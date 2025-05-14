@@ -144,6 +144,7 @@ public class MovementListController {
             
             MovementDetailController controller = loader.getController();
             controller.setTransaction(transaction);
+            controller.initLabels();
 
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();  // Usamos `event.getSource()` para obtener el origen del evento (el botón)
             

@@ -40,13 +40,8 @@ public class MovementDetailController {
 	@FXML
     private Button buttonBack;
 	
-	
-	public void initialize() {
-		// Cargar datos de los label con los datos de la transaccion que recibe el controlador
-		this.initLabels();
-	}
-	
-	private void initLabels() {
+	// Cargar datos de los label con los datos de la transaccion que recibe el controlador
+	public void initLabels() {
 		this.transactionType.setText(this.transaction.getType());
 		this.transactionAmount.setText(((Double)this.transaction.getAmount()).toString());
 		this.transactionNameCategory.setText(this.transaction.getNameCategory());

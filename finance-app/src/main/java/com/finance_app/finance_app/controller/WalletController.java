@@ -237,6 +237,7 @@ public class WalletController {
 	
 	@FXML
 	public void goToNotifications(ActionEvent event) {
+		System.out.println("bell icon ok");
 		this.goBackService.loadNewView(event, "/fxml/notification-view.fxml");
 	}
 	
@@ -253,5 +254,10 @@ public class WalletController {
 	@FXML
 	public void goToConfiguration(ActionEvent event) {
 		this.goBackService.loadNewView(event, "/fxml/configuration-view.fxml");
+	}
+	
+	@FXML
+	public void goToAllTransactions(ActionEvent event) {
+		this.goBackService.loadNewView(event, "/fxml/movement-list-view.fxml");
 	}
 }

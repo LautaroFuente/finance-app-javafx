@@ -71,16 +71,16 @@ Button:pressed {
     -fx-background-color: #d32f2f;
 }
 
-/* Etiquetas de error */
-#errorAmount, #errorDateFrom, #errorDateTo {
+.errorMessage {
+    -fx-font-size: 13px;
     -fx-text-fill: red;
-    -fx-font-size: 12px;
-    -fx-font-style: italic;
-    -fx-opacity: 0;
+    -fx-font-weight: normal;
 }
 
-#errorAmount.visible, #errorDateFrom.visible, #errorDateTo.visible {
-    -fx-opacity: 1;
+.infoMessage {
+	-fx-font-size: 13px;
+    -fx-font-weight: normal;
+    -fx-text-fill: green;
 }
 
 /* Estilo para el formulario */

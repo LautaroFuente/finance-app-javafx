@@ -60,10 +60,7 @@ public class AsignationLimitController {
 	private Label messageAboutAsignation;
 	
 	@FXML
-	private Label errorDateTo;
-	
-	@FXML
-	private Label errorDateFrom;
+	private Label errorDate;
 	
 	@FXML
 	private Label errorAmount;
@@ -86,9 +83,14 @@ public class AsignationLimitController {
 		
 		// Asignar lista de categorias al combo box
 		this.selectedCategory.setItems(FXCollections.observableArrayList(categoryList));
+		
+		this.selectedCategory.getSelectionModel().selectFirst();
 	}
 	
 	public void acceptAssign(ActionEvent event) {
+		
+		this.cleanErrorFields();
+		boolean hasError = false;
 		
 		// Obtener la categoria que se selecciono
 		Category categorySelected = this.selectedCategory.getValue();
@@ -105,47 +107,49 @@ public class AsignationLimitController {
             // Eliminar posibles espacios en blanco y convertir el String a BigDecimal
             if (!amountString.trim().isEmpty()) {
                 amount = new BigDecimal(amountString.trim());
+
+                // Verificar si el monto es menor o igual a cero
+                if (amount.compareTo(BigDecimal.ZERO) <= 0) {
+                    this.errorAmount.setText("El monto debe ser mayor a cero");
+                    hasError = true;
+                }
             } else {
-                // Si no se ha ingresado un monto
-                System.out.println("El monto no puede estar vacío");
+                this.errorAmount.setText("El monto ingresado no puede ser vacío");
+                hasError = true;
             }
         } catch (NumberFormatException e) {
-            // Si el String no es un número válido
-            System.out.println("Error: El monto ingresado no es válido.");
+            this.errorAmount.setText("El monto ingresado no es válido");
+            hasError = true;
         }
-        
+
         // Obtener fechas en el formato necesario
         LocalDateTime dateFromFormatted = this.dateFrom.getValue().atStartOfDay();
         LocalDateTime dateToFormatted = this.dateTo.getValue().atStartOfDay();
+
+        // Verificar que dateFrom no sea mayor que dateTo
+        if (dateFromFormatted.isAfter(dateToFormatted)) {
+            this.errorDate.setText("La fecha 'desde' no puede ser posterior a la fecha 'hasta'");
+            hasError = true;
+        }
 		
 		// Crear una nueva asignacion limite a esa categoria si se agregaron todos los campos y todos son validos
-        if(allFieldsAreCorrect(dateFromFormatted, dateToFormatted, amountString)) {
+        if(!hasError) {
         	LimitCategory limitCategory = new LimitCategory(user, categorySelected, amount, dateFromFormatted, dateToFormatted);
     		this.limitCategoryService.addLimitCategory(limitCategory);
-        }
-        // Si algun campo no es valido enviar mensaje
-        else {
-        	if(dateFromFormatted == null) {
-        		this.errorDateFrom.setText("La fecha ingresada es invalida");
-        	}
-        	
-        	if(!Validator.validateDate(dateToFormatted)) {
-        		this.errorDateTo.setText("La fecha ingresada es invalida o no puede ser posterior a la actual");
-        	}
-        	
-        	if(!Validator.validateNumericText(amountString)) {
-        		this.errorAmount.setText("El monto ingresado es invalido y no puede ser menor a cero");
-        	}
+    		this.cleanFields();
+    		this.cleanErrorFields();
+    		this.messageAboutAsignation.setText("Limite creado correctamente");
         }
 		
 	}
 	
-	// Verificar si todos los campos son validos
-	private boolean allFieldsAreCorrect(LocalDateTime dateFrom, LocalDateTime dateTo, String amount) {
-		if(!Validator.validateDate(dateTo) || !Validator.validateNumericText(amount) || dateFrom == null) {
-			return false;
-		}
-		return true;
+	private void cleanFields() {
+		this.maxAmount.setText("");
+	}
+	
+	private void cleanErrorFields() {
+		this.errorAmount.setText("");
+		this.errorDate.setText("");
 	}
 	
 	public void goBack(ActionEvent event) {

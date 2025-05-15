@@ -33,7 +33,7 @@
                   <TextField fx:id="maxAmount" />
                </children>
             </HBox>
-            <Label fx:id="errorAmount" />
+            <Label fx:id="errorAmount" styleClass="errorMessage" />
          </children>
       </VBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
@@ -46,11 +46,6 @@
                      </VBox.margin>
                   </Label>
                   <DatePicker fx:id="dateFrom" editable="false" />
-                  <Label fx:id="errorDateFrom">
-                     <VBox.margin>
-                        <Insets top="1.0" />
-                     </VBox.margin>
-                  </Label>
                </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
@@ -61,16 +56,16 @@
                      </VBox.margin>
                   </Label>
                   <DatePicker fx:id="dateTo" editable="false" />
-                  <Label fx:id="errorDateTo">
-                     <VBox.margin>
-                        <Insets top="1.0" />
-                     </VBox.margin>
-                  </Label>
                </children>
             </VBox>
          </children>
       </HBox>
-      <Label fx:id="messageAboutAsignation" layoutX="300.0" layoutY="14.0" prefHeight="17.0" prefWidth="0.0" text="" />
+      <Label fx:id="errorDate" prefHeight="17.0" styleClass="errorMessage">
+         <VBox.margin>
+            <Insets top="1.0" />
+         </VBox.margin>
+      </Label>
+      <Label fx:id="messageAboutAsignation" layoutX="300.0" layoutY="14.0" prefHeight="17.0" text="" />
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="70.0">
          <children>
             <Button fx:id="buttonAccept" mnemonicParsing="false" onAction="#acceptAssign" text="Aceptar" />

@@ -131,6 +131,7 @@ public class MovementListController {
 		else {
 			this.messageAboutTransaction.setText("No hay transacciones");
 		}
+		updateButtonState();
 	}
 	
 	private void viewSelectedTransaction(ActionEvent event, TransactionForListDTO transaction) {

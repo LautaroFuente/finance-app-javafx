@@ -60,7 +60,10 @@ public class NotificationController {
 				this.page++;
 				
 				// Asignarlas a la lista
-				this.notificationList.setItems(FXCollections.observableArrayList(notifications.stream().collect(Collectors.toList())));
+				System.out.println("notificaciones");
+				System.out.println(notifications);
+				System.out.println(notifications.get(0));
+				this.notificationList.setItems(FXCollections.observableArrayList(notifications));
 			}
 			// Si es vacia o nula agregar mensaje de no hay notificaciones
 			else {

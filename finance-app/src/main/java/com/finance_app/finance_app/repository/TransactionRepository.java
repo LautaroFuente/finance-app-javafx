@@ -25,7 +25,8 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long>{
 	
 	@Query("SELECT t.type AS type, t.amount AS amount, c.name AS nameCategory, t.date AS date "
 			+ "FROM Transaction t INNER JOIN Category c ON (t.category.id = c.id) "
-			+ "WHERE t.user.id = :userId")
+			+ "WHERE t.user.id = :userId "
+			+ "ORDER BY t.date DESC")
 	Page<Object[]> getAllTransactionsWithNameCategory(@Param("userId") Long userId, Pageable pageable);
 	
 }

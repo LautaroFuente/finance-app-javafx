@@ -11,7 +11,7 @@ import com.finance_app.finance_app.entities.Notification;
 
 public interface NotificationRepository extends JpaRepository<Notification, Long>{
 
-	@Query("SELECT n.message FROM Notification n WHERE n.user.id = :user_id ORDER BY n.date")
+	@Query("SELECT n FROM Notification n WHERE n.user.id = :user_id ORDER BY n.date DESC")
     Page<Notification> getAllNotificationForUser(@Param("user_id") Long user_id, Pageable pageable);
 	
 	@Query("SELECT COUNT(n) FROM Notification n WHERE n.user.id = :user_id")

@@ -83,6 +83,34 @@ public class NotificationController {
 		            }
 		        });
 		    }
+		    
+		 // --- Cell factory para agregar botón "X" en cada notificación ---
+		    notificationList.setCellFactory(listView -> new javafx.scene.control.ListCell<Notification>() {
+		        @Override
+		        protected void updateItem(Notification notification, boolean empty) {
+		            super.updateItem(notification, empty);
+
+		            if (empty || notification == null) {
+		                setText(null);
+		                setGraphic(null);
+		                return;
+		            }
+
+		            // Layout de la notificación
+		            javafx.scene.layout.HBox container = new javafx.scene.layout.HBox();
+		            container.setSpacing(10);
+
+		            Label msgLabel = new Label(notification.getMessage());
+		            Label dateLabel = new Label(notification.getDate().toString());
+
+		            Button deleteBtn = new Button("X");
+		            deleteBtn.setOnAction(e -> deleteNotification(notification));
+
+		            container.getChildren().addAll(msgLabel, dateLabel, deleteBtn);
+		            setGraphic(container);
+		        }
+		    });
+
 		}
 		// Si no existe lanzar excepcion
 		else {
@@ -106,6 +134,15 @@ public class NotificationController {
 			this.messageAboutList.setText("No hay mas notificaciones");
 		}
 	}
+	
+	private void deleteNotification(Notification notification) {
+	    // 1. Borrar de la BD
+	    notificationService.delete(notification.getId());
+
+	    // 2. Borrar de la vista
+	    notificationList.getItems().remove(notification);
+	}
+
 	
 	public void goBack(ActionEvent event) {
 		this.goBackService.loadNewView(event, "/fxml/wallet-view.fxml");

@@ -31,4 +31,9 @@ public class NotificationService {
 	public Integer getNumberOfNotificationFromUser(Long userId) {
 		return this.notificationRepository.getNumberOfNotificationFromUser(userId);
 	}
+	
+	public void delete(Long id) {
+	    notificationRepository.deleteById(id);
+	}
+
 }

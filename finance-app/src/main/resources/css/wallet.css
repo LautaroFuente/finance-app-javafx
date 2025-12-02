@@ -1,100 +1,70 @@
 .root {
-    -fx-background-color: #f4f6f9;
-    -fx-font-family: 'Arial', sans-serif;
-    -fx-font-size: 16px;
+  -fx-background-color: #f5f7fa;
 }
 
-.Label {
-    -fx-font-size: 18px;
-    -fx-font-weight: normal;
-    -fx-text-fill: #333333;
+/* Título */
+.title-label {
+  -fx-font-size: 22px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #2a2e37;
 }
 
-#titleLabel {
-    -fx-font-size: 24px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #2c3e50;
+/* Total del wallet */
+.total-wallet-label {
+  -fx-font-size: 28px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #4c8bf5;
 }
 
-#totalWallet {
-    -fx-font-size: 20px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #4CAF50;
-    -fx-padding: 10px 0;
+/* Badges */
+.notification-badge {
+  -fx-background-color: #e53935;
+  -fx-text-fill: white;
+  -fx-font-size: 10px;
+  -fx-padding: 2 5;
+  -fx-background-radius: 10;
 }
 
-.Circle {
-    -fx-fill: white;
+/* Tabla */
+.table-view {
+  -fx-background-radius: 8;
+  -fx-border-color: #d0d4db;
+  -fx-border-radius: 8;
 }
 
-.TableView {
-    -fx-background-color: white;
-    -fx-border-color: #cccccc;
-    -fx-border-radius: 5px;
-    -fx-padding: 10px;
-    -fx-effect: innershadow(gaussian, #000000, 5, 0.0, 1, 1);
-    -fx-pref-width: 300px;
-    -fx-pref-height: 200px;
+/* Botones principales */
+.primary-button {
+  -fx-background-color: #4c8bf5;
+  -fx-text-fill: white;
+  -fx-padding: 8 15;
+  -fx-font-size: 14px;
+  -fx-background-radius: 8;
 }
 
-.TableColumn {
-    -fx-font-size: 16px;
-    -fx-text-fill: #333333;
-    -fx-alignment: center;
+.primary-button:hover {
+  -fx-background-color: #3a74d0;
 }
 
-.TableView .table-header-cell {
-    -fx-background-color: #f0f0f0;
-    -fx-font-weight: bold;
+/* Botones secundarios */
+.secondary-button {
+  -fx-background-color: transparent;
+  -fx-border-color: #a3a8b1;
+  -fx-border-radius: 8;
+  -fx-text-fill: #2a2e37;
+  -fx-padding: 8 15;
 }
 
-.TableView .table-row-cell {
-    -fx-background-color: transparent;
-    -fx-font-size: 14px;
+.secondary-button:hover {
+  -fx-background-color: #e6e8eb;
 }
 
-.TableView .table-row-cell:hover {
-    -fx-background-color: #f9f9f9;
+/* Botones de texto (configuración / cerrar sesión) */
+.text-button {
+  -fx-background-color: transparent;
+  -fx-text-fill: #4b4f58;
+  -fx-font-size: 14px;
 }
 
-.Button {
-    -fx-background-color: #4CAF50;
-    -fx-text-fill: white;
-    -fx-font-size: 16px;
-    -fx-font-weight: bold;
-    -fx-padding: 12px 25px;
-    -fx-background-radius: 10px;
-    -fx-effect: innershadow(gaussian, #000000, 5, 0.0, 1, 1);
-    -fx-border-radius: 10px;
-    -fx-pref-width: 150px;
-    -fx-pref-height: 45px;
-}
-
-.Button:hover {
-    -fx-background-color: #45a049;
-    -fx-cursor: hand;
-    -fx-effect: innershadow(gaussian, #000000, 10, 0.0, 1, 1);
-}
-
-.Button:focused {
-    -fx-background-color: #388E3C;
-    -fx-border-color: transparent;
-}
-
-#notificationStack {
-    -fx-background-color: transparent;
-}
-
-#notificationCountLabel {
-    -fx-background-color: red;
-    -fx-text-fill: white;
-    -fx-font-size: 12px;
-    -fx-font-weight: bold;
-    -fx-padding: 3px 8px;
-    -fx-background-radius: 50%;
-    -fx-alignment: center;
-}
-
-#bellIcon {
-    -fx-effect: innershadow(gaussian, #000000, 5, 0.0, 1, 1);
+.text-button:hover {
+  -fx-text-fill: #2a2e37;
 }

@@ -1,30 +1,49 @@
+/* ==== Fondo general ==== */
 .root {
-    -fx-background-color: #f4f6f9;
-    -fx-font-family: 'Arial', sans-serif;
-    -fx-font-size: 16px;
-    -fx-alignment: center;
+  -fx-background-color: #f4f6f9; /* gris claro fintech */
 }
 
+/* ==== VBox principal ==== */
+.vbox {
+  -fx-spacing: 25;
+  -fx-alignment: center;
+}
+
+/* ==== Estilos generales de los botones ==== */
 .button {
-    -fx-background-color: #4CAF50;
-    -fx-text-fill: white;
-    -fx-font-size: 18px;
-    -fx-font-weight: bold;
-    -fx-padding: 15px 25px;
-    -fx-background-radius: 10px;
-    -fx-effect: innershadow(gaussian, #000000, 5, 0.0, 1, 1);
-    -fx-border-radius: 10px;
-    -fx-pref-width: 200px;
-    -fx-pref-height: 50px;
+  -fx-background-color: #2d6a4f; /* verde financiero */
+  -fx-text-fill: white;
+  -fx-font-size: 16px;
+  -fx-padding: 10 30;
+  -fx-background-radius: 8;
+  -fx-cursor: hand;
+
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.08), 6, 0, 0, 2);
+  -fx-border-color: transparent;
+
+  /* transición suave */
+  -fx-background-insets: 0;
 }
 
+/* Hover */
 .button:hover {
-    -fx-background-color: #45a049;
-    -fx-cursor: hand;
-    -fx-effect: innershadow(gaussian, #000000, 10, 0.0, 1, 1);
+  -fx-background-color: #245741; /* verde más oscuro */
 }
 
-.button:focused {
-    -fx-background-color: #388E3C;
-    -fx-border-color: transparent;
+/* Botón Salir, estilo especial */
+#buttonExit {
+  -fx-background-color: #d62828; /* rojo alerta */
+}
+
+#buttonExit:hover {
+  -fx-background-color: #b71f1f;
+}
+
+/* Botón de ayuda, estilo secundario */
+#buttonHelp {
+  -fx-background-color: #40916c; /* verde secundario */
+}
+
+#buttonHelp:hover {
+  -fx-background-color: #357a5a;
 }

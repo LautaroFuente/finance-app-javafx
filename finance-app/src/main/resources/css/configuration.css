@@ -1,105 +1,76 @@
-/* Estilos generales */
-* {
-    -fx-font-family: "Segoe UI", sans-serif;
-    -fx-font-size: 14px;
-    -fx-base: #f4f4f9;
-    -fx-background-color: #f4f4f9;
+/* ===== Fondo general ===== */
+.root {
+  -fx-background-color: #f4f6f9; /* gris fintech suave */
 }
 
-/* Título principal */
+/* ===== Título principal ===== */
 #resolutionTittle {
-    -fx-font-size: 18px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #333;
+  -fx-font-size: 20px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #1b4332;
 }
 
-/* Estilo del VBox para los RadioButtons */
-VBox {
-    -fx-spacing: 10px;
+/* ===== VBox general ===== */
+.vbox {
+  -fx-spacing: 30;
+  -fx-alignment: center;
+  -fx-padding: 20 40;
 }
 
-/* RadioButtons */
-RadioButton {
-    -fx-font-size: 16px;
-    -fx-text-fill: #555;
-    -fx-background-color: #fff;
-    -fx-padding: 5px;
+/* ===== Radio Buttons (resoluciones) ===== */
+.radio-button {
+  -fx-font-size: 16px;
+  -fx-text-fill: #2d6a4f;
 }
 
-RadioButton:selected {
-    -fx-text-fill: #4CAF50;
+.radio-button .radio {
+  -fx-padding: 5px;
 }
 
-/* Estilo de los botones */
-Button {
-    -fx-background-color: #4CAF50;
-    -fx-text-fill: white;
-    -fx-font-size: 16px;
-    -fx-pref-width: 120px;
-    -fx-pref-height: 40px;
-    -fx-background-radius: 5px;
-    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.2), 2, 0.5, 0, 2);
+/* Hover: un pequeño realce */
+.radio-button:hover {
+  -fx-text-fill: #1b4332;
 }
 
-Button:hover {
-    -fx-background-color: #45a049;
+/* ===== Sección de idioma ===== */
+.label {
+  -fx-font-size: 16px;
+  -fx-text-fill: #1b4332;
 }
 
-Button:pressed {
-    -fx-background-color: #3e8e41;
+/* ===== Botones generales ===== */
+
+.button {
+  -fx-background-color: #2d6a4f;
+  -fx-text-fill: white;
+  -fx-font-size: 14px;
+  -fx-padding: 10 25;
+  -fx-background-radius: 8;
+  -fx-cursor: hand;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.08), 5, 0, 0, 2);
 }
 
-/* Botón "Atras" */
-#buttonBack {
-    -fx-background-color: #f44336;
-    -fx-text-fill: white;
-    -fx-pref-width: 100px;
+.button:hover {
+  -fx-background-color: #245741;
 }
 
-#buttonBack:hover {
-    -fx-background-color: #e53935;
-}
-
-#buttonBack:pressed {
-    -fx-background-color: #d32f2f;
-}
-
-/* Estilo para el botón "Eliminar Cuenta" */
+/* ===== Botón Eliminar Cuenta ===== */
 #deleteAccount {
-    -fx-background-color: #d32f2f; /* Rojo intenso para resaltar la peligrosidad de la acción */
-    -fx-text-fill: white;
-    -fx-pref-width: 200px;  /* Hacerlo más grande para destacar */
-    -fx-font-size: 14px;
-    -fx-font-weight: bold;
-    -fx-background-radius: 5px;
-    -fx-border-radius: 5px;
+  -fx-background-color: #d62828; /* rojo fintech */
+  -fx-text-fill: white;
+  -fx-font-size: 14px;
+  -fx-background-radius: 8;
+  -fx-padding: 10 25;
+  -fx-cursor: hand;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.12), 6, 0, 0, 2);
 }
 
-/* Botón "Aplicar" */
-#buttonApply {
-    -fx-background-color: #3e8e41;
-    -fx-text-fill: white;
-    -fx-pref-width: 120px;
+#deleteAccount:hover {
+  -fx-background-color: #b71d1d;
 }
 
-#buttonApply:hover {
-    -fx-background-color: #2e7d32;
-}
-
-#buttonApply:pressed {
-    -fx-background-color: #1b5e20;
-}
-
-/* Estilo general de la vista */
-AnchorPane {
-    -fx-background-color: #fafafa;
-    -fx-padding: 20px;
-}
-
-/* Estilo de los RadioButtons dentro del VBox */
-VBox {
-    -fx-alignment: center;
-    -fx-pref-height: 150px;
-    -fx-pref-width: 300px;
-    -fx-spacing: 10px;
+/* ===== Contenedores HBox ===== */
+.hbox {
+  -fx-spacing: 80;
+  -fx-alignment: center;
 }

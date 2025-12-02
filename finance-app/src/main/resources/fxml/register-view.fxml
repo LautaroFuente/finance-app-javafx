@@ -8,38 +8,68 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" prefHeight="411.0" prefWidth="638.0" spacing="30" stylesheets="@/css/register.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.finance_app.finance_app.controller.RegisterController">
-   
-   <children>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
-         <children>
-            <Label alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Nombre" />
-            <TextField fx:id="nameField" />
-         </children>
-         <VBox.margin>
-            <Insets top="50.0" />
-         </VBox.margin>
-      </HBox>
-      <Label fx:id="errorNameField" layoutX="286.0" layoutY="115.0" styleClass="errorMessage" text="" />
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
-         <children>
-            <Label alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Email" />
-            <TextField fx:id="emailField" />
-         </children>
-      </HBox>
-      <Label fx:id="errorEmailField" layoutX="286.0" layoutY="192.0" styleClass="errorMessage" text="" />
-      <HBox alignment="CENTER" prefHeight="70.0" prefWidth="638.0" spacing="50.0">
-         <children>
-            <Label alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Contraseña" />
-            <PasswordField fx:id="passwordField" />
-         </children>
-      </HBox>
-      <Label fx:id="errorPasswordField" layoutX="286.0" layoutY="271.0" styleClass="errorMessage" text="" />
-      <Button fx:id="buttonSubmit" layoutX="274.0" layoutY="315.0" mnemonicParsing="false" onAction="#onSubmit" text="Enviar" />
-      <Label fx:id="responseMessage" layoutX="286.0" layoutY="352.0" styleClass="errorMessage" text="" />
-      <Button fx:id="buttonBack" layoutX="504.0" layoutY="348.0" mnemonicParsing="false" styleClass="back-button" onAction="#goBack" text="Atras">
-         <VBox.margin>
-            <Insets bottom="25.0" />
-         </VBox.margin></Button>
-   </children>
+<VBox alignment="TOP_CENTER"
+      prefHeight="411.0"
+      prefWidth="638.0"
+      spacing="18"
+      stylesheets="@/css/register.css"
+      xmlns="http://javafx.com/javafx/23.0.1"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.finance_app.finance_app.controller.RegisterController">
+
+    <children>
+
+        <!-- Title -->
+        <Label text="Crear cuenta" styleClass="title-label">
+            <VBox.margin>
+                <Insets top="20" bottom="10" />
+            </VBox.margin>
+        </Label>
+
+        <!-- Nombre -->
+        <VBox spacing="3">
+            <Label text="Nombre" styleClass="input-label" />
+            <TextField fx:id="nameField" promptText="Tu nombre completo" />
+            <Label fx:id="errorNameField" text="" styleClass="errorMessage"/>
+        </VBox>
+
+        <!-- Email -->
+        <VBox spacing="3">
+            <Label text="Email" styleClass="input-label" />
+            <TextField fx:id="emailField" promptText="ejemplo@mail.com" />
+            <Label fx:id="errorEmailField" text="" styleClass="errorMessage"/>
+        </VBox>
+
+        <!-- Password -->
+        <VBox spacing="3">
+            <Label text="Contraseña" styleClass="input-label" />
+            <PasswordField fx:id="passwordField" promptText="••••••••" />
+            <Label fx:id="errorPasswordField" text="" styleClass="errorMessage"/>
+        </VBox>
+
+        <!-- Botón enviar -->
+        <Button fx:id="buttonSubmit"
+                text="Registrarse"
+                onAction="#onSubmit"
+                styleClass="primary-button">
+            <VBox.margin>
+                <Insets top="10" />
+            </VBox.margin>
+        </Button>
+
+        <!-- Mensaje de respuesta -->
+        <Label fx:id="responseMessage" text="" styleClass="statusMessage" />
+
+        <!-- Botón atrás -->
+        <Button fx:id="buttonBack"
+                text="Atrás"
+                onAction="#goBack"
+                styleClass="secondary-button">
+            <VBox.margin>
+                <Insets top="30" />
+            </VBox.margin>
+        </Button>
+
+    </children>
 </VBox>
+

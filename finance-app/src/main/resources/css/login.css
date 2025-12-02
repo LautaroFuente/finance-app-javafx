@@ -1,69 +1,74 @@
-.root {
-    -fx-background-color: #f4f6f9;
-    -fx-font-family: 'Arial', sans-serif;
-    -fx-font-size: 16px;
+/* ===== Layout general ===== */
+.root,
+VBox,
+HBox {
+  -fx-alignment: center;
+  -fx-spacing: 20;
 }
 
-.TextField, .PasswordField {
-    -fx-background-color: white;
-    -fx-border-color: #cccccc;
-    -fx-border-radius: 5px;
-    -fx-font-size: 16px;
-    -fx-padding: 10px;
-    -fx-pref-width: 300px;
-}
-
-.Label {
-    -fx-font-size: 16px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #333333;
-}
-
-.button {
-    -fx-background-color: #4CAF50;
-    -fx-text-fill: white;
-    -fx-font-size: 16px;
-    -fx-font-weight: bold;
-    -fx-padding: 15px 25px;
-    -fx-background-radius: 10px;
-    -fx-effect: innershadow(gaussian, #000000, 5, 0.0, 1, 1);
-    -fx-border-radius: 10px;
-    -fx-pref-width: 100px;
-    -fx-pref-height: 25px;
-}
-
-.button:hover {
-    -fx-background-color: #45a049;
-    -fx-cursor: hand;
-    -fx-effect: innershadow(gaussian, #000000, 10, 0.0, 1, 1);
+/* ===== Labels ===== */
+.label {
+  -fx-font-size: 14px;
+  -fx-text-fill: #34495e;
 }
 
 .errorMessage {
-    -fx-font-size: 14px;
-    -fx-text-fill: red;
-    -fx-font-weight: normal;
+  -fx-text-fill: #e74c3c;
+  -fx-font-size: 12px;
 }
 
+/* ===== TextField y PasswordField ===== */
+.text-field,
+.password-field {
+  -fx-pref-width: 250px;
+  -fx-background-color: #ffffff;
+  -fx-border-color: #d0d7de;
+  -fx-border-radius: 6px;
+  -fx-background-radius: 6px;
+  -fx-padding: 7px 8px;
+  -fx-font-size: 14px;
+}
+
+.text-field:focused,
+.password-field:focused {
+  -fx-border-color: #2c3e50;
+}
+
+/* ===== Botón principal ===== */
+#buttonSubmit {
+  -fx-background-color: #2ecc71;
+  -fx-text-fill: white;
+  -fx-font-size: 14px;
+  -fx-padding: 8px 20px;
+  -fx-background-radius: 8px;
+  -fx-border-radius: 8px;
+}
+
+#buttonSubmit:hover {
+  -fx-background-color: #27ae60;
+}
+
+/* ===== Botón Atrás ===== */
 .back-button {
-    -fx-background-color: #E57373;
+  -fx-background-color: #bdc3c7;
+  -fx-text-fill: #2c3e50;
+  -fx-padding: 7px 20px;
+  -fx-font-size: 14px;
+  -fx-background-radius: 8px;
+  -fx-border-radius: 8px;
 }
 
 .back-button:hover {
-    -fx-background-color: #D84343;
+  -fx-background-color: #a6b1b4;
 }
 
+/* ===== Bottom Box ===== */
 .bottom-box {
-    -fx-padding: 40px 50px 50px 0;
+  -fx-alignment: bottom-right;
+  -fx-padding: 10px;
 }
 
-.errorMessage {
-    -fx-font-size: 13px;
-    -fx-text-fill: red;
-    -fx-font-weight: normal;
-}
-
-.infoMessage {
-	-fx-font-size: 13px;
-    -fx-font-weight: normal;
-    -fx-text-fill: green;
+/* ===== Mensaje general ===== */
+#responseMessage {
+  -fx-font-size: 13px;
 }

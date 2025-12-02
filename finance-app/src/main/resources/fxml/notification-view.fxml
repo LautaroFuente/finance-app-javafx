@@ -7,22 +7,48 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" prefHeight="411.0" prefWidth="638.0" spacing="30" stylesheets="@/css/notification.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.finance_app.finance_app.controller.NotificationController">
-   
-   <children>
-      <Label layoutX="286.0" layoutY="36.0" text="Mis notificaciones">
-         <VBox.margin>
-            <Insets top="10.0" />
-         </VBox.margin></Label>
-      <HBox alignment="CENTER" prefHeight="206.0" prefWidth="638.0">
-         <children>
-            <ListView fx:id="notificationList" prefHeight="206.0" prefWidth="516.0"/>
-         </children>
-      </HBox>
-      <Label fx:id="messageAboutList" layoutX="286.0" layoutY="350.0" text="" />
-      <Button fx:id="buttonBack" layoutX="514.0" layoutY="346.0" mnemonicParsing="false" onAction="#goBack" text="Atras">
-         <VBox.margin>
-            <Insets bottom="10.0" />
-         </VBox.margin></Button>
-   </children>
+<VBox alignment="TOP_CENTER"
+      prefHeight="411.0"
+      prefWidth="638.0"
+      spacing="25"
+      stylesheets="@/css/notification.css"
+      xmlns="http://javafx.com/javafx/23.0.1"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.finance_app.finance_app.controller.NotificationController">
+
+    <children>
+
+        <!-- Titulo -->
+        <Label text="Mis notificaciones" styleClass="title-label">
+            <VBox.margin>
+                <Insets top="15" bottom="5" />
+            </VBox.margin>
+        </Label>
+
+        <!-- Lista -->
+        <ListView fx:id="notificationList"
+                  prefHeight="260"
+                  prefWidth="520"
+                  styleClass="card-list" />
+
+        <!-- Mensaje de estado -->
+        <Label fx:id="messageAboutList"
+               text=""
+               styleClass="status-label" />
+
+        <!-- Botón volver -->
+        <HBox alignment="CENTER_RIGHT" prefWidth="600">
+            <children>
+                <Button fx:id="buttonBack"
+                        text="Atrás"
+                        onAction="#goBack"
+                        styleClass="secondary-button">
+                    <HBox.margin>
+                        <Insets right="20" />
+                    </HBox.margin>
+                </Button>
+            </children>
+        </HBox>
+
+    </children>
 </VBox>

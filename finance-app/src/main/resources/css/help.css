@@ -1,46 +1,50 @@
+/* ===== Fondo general ===== */
 .root {
-    -fx-background-color: #f4f6f9;
-    -fx-font-family: 'Arial', sans-serif;
-    -fx-font-size: 16px;
+  -fx-background-color: #f4f6f9; /* gris fintech */
 }
 
-.help-label {
-    -fx-font-size: 22px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #000000;
-    -fx-background-color: transparent;
-    -fx-padding: 5px 0;
-    -fx-alignment: center;
-    -fx-wrap-text: true;
-    -fx-text-alignment: center;
-}    
+/* ===== VBox principal ===== */
+.vbox {
+  -fx-padding: 20 40;
+  -fx-spacing: 30;
+  -fx-alignment: center;
+}
 
+/* ===== Label del mensaje ===== */
+.help-label {
+  -fx-text-fill: #1b4332; /* verde oscuro, serio */
+  -fx-font-size: 18px;
+  -fx-font-weight: bold;
+  -fx-wrap-text: true;
+  -fx-text-alignment: center;
+  -fx-alignment: center;
+
+  -fx-padding: 20;
+  -fx-background-color: white;
+  -fx-background-radius: 10;
+
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 8, 0, 0, 2);
+}
+
+/* ===== HBox inferior ===== */
+.bottom-box {
+  -fx-alignment: bottom-right;
+  -fx-padding: 0 20 20 0;
+}
+
+/* ===== Botón Atrás ===== */
 .back-button {
-    -fx-background-color: #E57373;
-    -fx-text-fill: white;
-    -fx-font-size: 16px;
-    -fx-font-weight: bold;
-    -fx-padding: 10px 15px;
-    -fx-background-radius: 10px;
-    -fx-effect: innershadow(gaussian, #000000, 5, 0.0, 1, 1);
-    -fx-border-radius: 10px;
-    -fx-pref-width: 100px;
-    -fx-pref-height: 30px;
+  -fx-background-color: #2d6a4f;
+  -fx-text-fill: white;
+  -fx-font-size: 14px;
+
+  -fx-padding: 8 25;
+  -fx-background-radius: 8;
+  -fx-cursor: hand;
+
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.08), 5, 0, 0, 2);
 }
 
 .back-button:hover {
-    -fx-background-color: #D84343;
-    -fx-cursor: hand;
-    -fx-effect: innershadow(gaussian, #000000, 10, 0.0, 1, 1);
+  -fx-background-color: #245741;
 }
-
-.back-button:focused {
-    -fx-background-color: #B71C1C;
-    -fx-border-color: transparent;
-}
-
-.bottom-box {
-    -fx-padding: 40px 50px 50px 0;
-}
-
-

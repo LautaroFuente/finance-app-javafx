@@ -1,106 +1,104 @@
-/* Estilos generales */
-* {
-    -fx-font-family: "Segoe UI", sans-serif;
-    -fx-font-size: 14px;
-    -fx-base: #f4f4f9;
-    -fx-background-color: #f4f4f9;
+/* ===== Layout general ===== */
+.root,
+VBox {
+  -fx-alignment: center;
+  -fx-padding: 20;
+  -fx-spacing: 20;
 }
 
-/* Título */
-#title {
-    -fx-font-size: 20px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #333;
+/* ===== Título ===== */
+.label {
+  -fx-font-size: 18px;
+  -fx-text-fill: #2c3e50;
+  -fx-font-weight: bold;
 }
 
-.TableView {
-    -fx-background-color: white;
-    -fx-border-color: #cccccc;
-    -fx-border-radius: 5px;
-    -fx-padding: 10px;
-    -fx-effect: innershadow(gaussian, #000000, 5, 0.0, 1, 1);
-    -fx-pref-width: 300px;
-    -fx-pref-height: 200px;
+/* ===== Tabla ===== */
+.table-view {
+  -fx-background-color: #ffffff;
+  -fx-border-color: #d0d7de;
+  -fx-border-width: 1;
+  -fx-background-radius: 10;
+  -fx-border-radius: 10;
+  -fx-padding: 5;
 }
 
-.TableColumn {
-    -fx-font-size: 16px;
-    -fx-text-fill: #333333;
-    -fx-alignment: center;
+.table-view .column-header-background {
+  -fx-background-color: #f4f6f6;
+  -fx-background-radius: 10 10 0 0;
 }
 
-.TableView .table-header-cell {
-    -fx-background-color: #f0f0f0;
-    -fx-font-weight: bold;
+.table-column {
+  -fx-alignment: CENTER;
+  -fx-font-size: 13px;
 }
 
-.TableView .table-row-cell {
-    -fx-background-color: transparent;
-    -fx-font-size: 14px;
+/* Filas */
+.table-row-cell {
+  -fx-border-color: transparent;
+  -fx-padding: 5;
 }
 
-.TableView .table-row-cell:hover {
-    -fx-background-color: #f9f9f9;
+.table-row-cell:filled:hover {
+  -fx-background-color: #ecf0f1;
 }
 
-/* Ajustes para los botones de paginación */
+/* Tipo */
+#transactionType {
+  -fx-text-fill: #34495e;
+}
+
+/* Monto */
+#transactionAmount {
+  -fx-font-weight: bold;
+}
+
+/* Categoría */
+#transactionCategory {
+  -fx-text-fill: #34495e;
+}
+
+/* Fecha */
+#transactionDate {
+  -fx-text-fill: #546e7a;
+}
+
+/* Acción */
+#transactionView {
+  -fx-text-fill: #2980b9;
+}
+
+/* ===== Botones de paginación ===== */
 #previousButton,
 #nextButton {
-    -fx-background-color: #2196F3;
-    -fx-text-fill: white;
-    -fx-pref-width: 100px;
-    -fx-font-size: 14px;
-    -fx-background-radius: 5px;
+  -fx-background-color: #bdc3c7;
+  -fx-text-fill: #2c3e50;
+  -fx-padding: 7px 20px;
+  -fx-font-size: 13px;
+  -fx-background-radius: 8px;
 }
 
 #previousButton:hover,
 #nextButton:hover {
-    -fx-background-color: #1976D2;
+  -fx-background-color: #a6b1b4;
 }
 
-#previousButton:pressed,
-#nextButton:pressed {
-    -fx-background-color: #1565C0;
+/* ===== Mensaje ===== */
+#messageAboutTransaction {
+  -fx-text-fill: #c0392b;
+  -fx-font-weight: bold;
+  -fx-font-size: 13px;
 }
 
-/* Botón "Atrás" */
+/* ===== Botón Atrás ===== */
 #buttonBack {
-    -fx-background-color: #f44336;
-    -fx-text-fill: white;
-    -fx-pref-width: 100px;
-    -fx-font-size: 14px;
-    -fx-background-radius: 5px;
+  -fx-background-color: #bdc3c7;
+  -fx-text-fill: #2c3e50;
+  -fx-padding: 7px 20px;
+  -fx-font-size: 14px;
+  -fx-background-radius: 8px;
 }
 
 #buttonBack:hover {
-    -fx-background-color: #e53935;
-}
-
-#buttonBack:pressed {
-    -fx-background-color: #d32f2f;
-}
-
-/* Mensajes de error o información */
-#messageAboutTransaction {
-    -fx-font-size: 14px;
-    -fx-text-fill: #FF5722; /* Naranja para errores */
-    -fx-font-weight: bold;
-    -fx-padding: 10px;
-}
-
-/* Estilo general de la vista */
-AnchorPane {
-    -fx-background-color: #fafafa;
-    -fx-padding: 20px;
-}
-
-/* Alineación y organización de los elementos */
-.children {
-    -fx-alignment: center;
-    -fx-spacing: 20px;
-}
-
-/* Ajuste de la posición y margen de los labels */
-Label {
-    -fx-padding: 5px;
+  -fx-background-color: #a6b1b4;
 }

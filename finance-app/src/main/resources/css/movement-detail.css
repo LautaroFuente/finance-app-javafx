@@ -1,69 +1,58 @@
-/* Estilos generales */
-* {
-    -fx-font-family: "Segoe UI", sans-serif;
-    -fx-font-size: 14px;
-    -fx-base: #f4f4f9;
-    -fx-background-color: #f4f4f9;
+/* ===== Layout general ===== */
+.root,
+VBox {
+  -fx-alignment: center;
+  -fx-spacing: 25;
+  -fx-padding: 20;
 }
 
-/* Títulos de transacción */
-#transactionType,
-#transactionAmount,
+/* ===== Card del detalle ===== */
+HBox {
+  -fx-padding: 20;
+  -fx-background-color: #ffffff;
+  -fx-background-radius: 10;
+  -fx-border-radius: 10;
+  -fx-border-color: #d0d7de;
+  -fx-border-width: 1;
+  -fx-spacing: 30;
+}
+
+/* ===== Labels de información ===== */
+.label {
+  -fx-font-size: 14px;
+  -fx-text-fill: #2c3e50;
+}
+
+/* Si querés diferenciar algunos campos, podés aplicar desde el controlador:
+   fx:id="transactionAmount" -> se verá más destacado */
+#transactionAmount {
+  -fx-font-size: 16px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #2ecc71; /* verde positivo — si el monto es negativo, podés cambiarlo en runtime */
+}
+
+#transactionType {
+  -fx-font-size: 14px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #34495e;
+}
+
 #transactionNameCategory,
 #transactionDate {
-    -fx-font-size: 16px;
-    -fx-text-fill: #333;
-    -fx-font-weight: normal;
+  -fx-font-size: 14px;
+  -fx-text-fill: #34495e;
 }
 
-/* Ajustes específicos para cada label */
-#transactionType {
-    -fx-font-weight: bold;
-    -fx-text-fill: #4CAF50; /* Verde para tipo de transacción */
-}
-
-#transactionAmount {
-    -fx-text-fill: #FF5722; /* Naranja para monto */
-}
-
-#transactionNameCategory {
-    -fx-text-fill: #607D8B; /* Gris para nombre de categoría */
-}
-
-#transactionDate {
-    -fx-text-fill: #3F51B5; /* Azul para fecha */
-}
-
-/* Botón "Atras" */
+/* ===== Botón Atrás ===== */
 #buttonBack {
-    -fx-background-color: #f44336;
-    -fx-text-fill: white;
-    -fx-pref-width: 100px;
-    -fx-font-size: 16px;
-    -fx-background-radius: 5px;
+  -fx-background-color: #bdc3c7;
+  -fx-text-fill: #2c3e50;
+  -fx-padding: 7px 20px;
+  -fx-font-size: 14px;
+  -fx-background-radius: 8px;
+  -fx-border-radius: 8px;
 }
 
 #buttonBack:hover {
-    -fx-background-color: #e53935;
-}
-
-#buttonBack:pressed {
-    -fx-background-color: #d32f2f;
-}
-
-/* Estilo general de la vista */
-AnchorPane {
-    -fx-background-color: #fafafa;
-    -fx-padding: 20px;
-}
-
-/* Alineación y organización de los elementos */
-.children {
-    -fx-alignment: center;
-    -fx-spacing: 20px;
-}
-
-/* Ajuste de la posición y margen de los labels */
-Label {
-    -fx-padding: 5px;
+  -fx-background-color: #a6b1b4;
 }

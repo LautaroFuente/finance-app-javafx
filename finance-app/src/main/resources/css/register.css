@@ -1,62 +1,75 @@
+/* Fondo general */
 .root {
-    -fx-background-color: #f4f6f9;
-    -fx-font-family: 'Arial', sans-serif;
-    -fx-font-size: 16px;
+  -fx-background-color: #f5f7fa;
+  -fx-padding: 20;
 }
 
-.TextField, .PasswordField {
-    -fx-background-color: white;
-    -fx-border-color: #cccccc;
-    -fx-border-radius: 5px;
-    -fx-font-size: 16px;
-    -fx-padding: 10px;
-    -fx-pref-width: 300px;
+/* Título */
+.title-label {
+  -fx-font-size: 24px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #2a2e37;
 }
 
-.Label {
-    -fx-font-size: 16px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #333333;
+/* Label de campo */
+.input-label {
+  -fx-text-fill: #4b4f58;
+  -fx-font-size: 14px;
+  -fx-font-weight: 600;
 }
 
-.button {
-    -fx-background-color: #4CAF50;
-    -fx-text-fill: white;
-    -fx-font-size: 16px;
-    -fx-font-weight: bold;
-    -fx-padding: 15px 25px;
-    -fx-background-radius: 10px;
-    -fx-effect: innershadow(gaussian, #000000, 5, 0.0, 1, 1);
-    -fx-border-radius: 10px;
-    -fx-pref-width: 100px;
-    -fx-pref-height: 25px;
+/* Input fields */
+.text-field,
+.password-field {
+  -fx-background-color: white;
+  -fx-border-color: #d0d4db;
+  -fx-border-radius: 6;
+  -fx-background-radius: 6;
+  -fx-padding: 8;
+  -fx-font-size: 14px;
 }
 
-
-.button:hover {
-    -fx-background-color: #45a049;
-    -fx-cursor: hand;
-    -fx-effect: innershadow(gaussian, #000000, 10, 0.0, 1, 1);
+.text-field:focused,
+.password-field:focused {
+  -fx-border-color: #4c8bf5;
+  -fx-background-color: white;
 }
 
-.back-button {
-    -fx-background-color: #E57373;
+/* Botón primario */
+.primary-button {
+  -fx-background-color: #4c8bf5;
+  -fx-text-fill: white;
+  -fx-font-size: 15px;
+  -fx-padding: 8 20;
+  -fx-background-radius: 8;
 }
 
-.back-button:hover {
-    -fx-background-color: #D84343;
+.primary-button:hover {
+  -fx-background-color: #3a74d0;
 }
 
+/* Botón secundario */
+.secondary-button {
+  -fx-background-color: transparent;
+  -fx-border-color: #a3a8b1;
+  -fx-border-radius: 6;
+  -fx-padding: 6 16;
+  -fx-text-fill: #2a2e37;
+  -fx-font-size: 14px;
+}
+
+.secondary-button:hover {
+  -fx-background-color: #e6e8eb;
+}
+
+/* Errores */
 .errorMessage {
-    -fx-font-size: 13px;
-    -fx-text-fill: red;
-    -fx-font-weight: normal;
+  -fx-text-fill: #d9534f;
+  -fx-font-size: 12px;
 }
 
-.infoMessage {
-	-fx-font-size: 13px;
-    -fx-font-weight: normal;
-    -fx-text-fill: green;
+/* Estado general (éxito, etc.) */
+.statusMessage {
+  -fx-font-size: 14px;
+  -fx-text-fill: #2a2e37;
 }
-
-

@@ -55,4 +55,5 @@ HBox {
 
 #buttonBack:hover {
   -fx-background-color: #a6b1b4;
+  -fx-cursor: hand;
 }

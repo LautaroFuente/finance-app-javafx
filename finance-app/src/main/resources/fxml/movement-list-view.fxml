@@ -19,10 +19,10 @@
          <children>
             <TableView fx:id="transactionList">
               <columns>
-                <TableColumn fx:id="transactionType" minWidth="-1.0" prefWidth="75.0" text="Tipo" />
-                <TableColumn fx:id="transactionAmount" prefWidth="75.0" text="Monto" />
-                <TableColumn fx:id="transactionCategory" prefWidth="75.0" text="Categoria" />
-                <TableColumn fx:id="transactionDate" prefWidth="75.0" text="Fecha" />
+                <TableColumn fx:id="transactionType" minWidth="-1.0" prefWidth="90.0" text="Tipo" />
+                <TableColumn fx:id="transactionAmount" prefWidth="90.0" text="Monto" />
+                <TableColumn fx:id="transactionCategory" prefWidth="90.0" text="Categoria" />
+                <TableColumn fx:id="transactionDate" prefWidth="90.0" text="Fecha" />
                 <TableColumn fx:id="transactionView" prefWidth="75.0" text="Accion" />
               </columns>
             </TableView>

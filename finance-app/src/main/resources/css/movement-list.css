@@ -66,6 +66,7 @@ VBox {
 /* Acción */
 #transactionView {
   -fx-text-fill: #2980b9;
+  -fx-cursor: hand;
 }
 
 /* ===== Botones de paginación ===== */
@@ -81,6 +82,7 @@ VBox {
 #previousButton:hover,
 #nextButton:hover {
   -fx-background-color: #a6b1b4;
+  -fx-cursor: hand;
 }
 
 /* ===== Mensaje ===== */
@@ -101,4 +103,5 @@ VBox {
 
 #buttonBack:hover {
   -fx-background-color: #a6b1b4;
+  -fx-cursor: hand;
 }

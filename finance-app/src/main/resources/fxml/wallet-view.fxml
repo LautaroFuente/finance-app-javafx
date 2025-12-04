@@ -81,10 +81,10 @@
                     <children>
                         <TableView fx:id="transactionList" prefWidth="270">
                             <columns>
-                                <TableColumn fx:id="transactionType" prefWidth="75" text="Tipo"/>
-                                <TableColumn fx:id="transactionAmount" prefWidth="75" text="Monto"/>
-                                <TableColumn fx:id="transactionCategory" prefWidth="90" text="Categoría"/>
-                                <TableColumn fx:id="transactionDate" prefWidth="75" text="Fecha"/>
+                                <TableColumn fx:id="transactionType" prefWidth="90" text="Tipo"/>
+                                <TableColumn fx:id="transactionAmount" prefWidth="90" text="Monto"/>
+                                <TableColumn fx:id="transactionCategory" prefWidth="120" text="Categoría"/>
+                                <TableColumn fx:id="transactionDate" prefWidth="130" text="Fecha"/>
                             </columns>
                         </TableView>
 

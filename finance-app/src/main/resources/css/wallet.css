@@ -16,6 +16,11 @@
   -fx-text-fill: #4c8bf5;
 }
 
+/* Cursor para TODOS los botones */
+.button {
+  -fx-cursor: hand;
+}
+
 /* Badges */
 .notification-badge {
   -fx-background-color: #e53935;
@@ -30,6 +35,11 @@
   -fx-background-radius: 8;
   -fx-border-color: #d0d4db;
   -fx-border-radius: 8;
+}
+
+.table-view .column-header {
+  -fx-font-size: 12px;
+  -fx-font-weight: bold;
 }
 
 /* Botones principales */
@@ -58,13 +68,17 @@
   -fx-background-color: #e6e8eb;
 }
 
-/* Botones de texto (configuración / cerrar sesión) */
+/* Botones de texto */
 .text-button {
-  -fx-background-color: transparent;
+  -fx-background-color: #f0f2f5;
   -fx-text-fill: #4b4f58;
   -fx-font-size: 14px;
+  -fx-padding: 6 12;
+  -fx-background-radius: 6;
+  -fx-border-color: #d0d4db;
+  -fx-border-radius: 6;
 }
 
 .text-button:hover {
-  -fx-text-fill: #2a2e37;
+  -fx-background-color: #e2e4e7;
 }

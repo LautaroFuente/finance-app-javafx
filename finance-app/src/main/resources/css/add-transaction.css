@@ -71,6 +71,7 @@ HBox {
 }
 #buttonSubmit:hover {
   -fx-background-color: #27ae60;
+  -fx-cursor: hand;
 }
 
 /* Botón volver */
@@ -80,6 +81,7 @@ HBox {
 }
 #buttonBack:hover {
   -fx-background-color: #a6b1b4;
+  -fx-cursor: hand;
 }
 
 /* ===== Mensaje general (éxito / error) ===== */

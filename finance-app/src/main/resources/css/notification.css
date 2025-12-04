@@ -49,4 +49,5 @@
 
 .secondary-button:hover {
   -fx-background-color: #e6e8eb;
+  -fx-cursor: hand;
 }

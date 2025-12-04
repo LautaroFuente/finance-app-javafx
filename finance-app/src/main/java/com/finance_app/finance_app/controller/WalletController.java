@@ -224,6 +224,14 @@ public class WalletController {
 		// Hacer la tabla no editable por el usuario
 		transactionList.setEditable(false);
 		transactionList.setColumnResizePolicy(TableView.UNCONSTRAINED_RESIZE_POLICY); // Para controlar resizing
+
+		transactionList.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
+		transactionType.setReorderable(false);
+		transactionAmount.setReorderable(false);
+		transactionCategory.setReorderable(false);
+		transactionDate.setReorderable(false);
+
 		
 		// Cargar datos en la lista
 		transactionList.setItems(FXCollections.observableArrayList(this.transactionListDataService.getTransactionsForListWallet(0, 7)));

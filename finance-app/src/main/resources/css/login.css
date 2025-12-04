@@ -42,6 +42,7 @@ HBox {
   -fx-padding: 8px 20px;
   -fx-background-radius: 8px;
   -fx-border-radius: 8px;
+  -fx-cursor: hand;
 }
 
 #buttonSubmit:hover {
@@ -56,6 +57,7 @@ HBox {
   -fx-font-size: 14px;
   -fx-background-radius: 8px;
   -fx-border-radius: 8px;
+  -fx-cursor: hand;
 }
 
 .back-button:hover {
